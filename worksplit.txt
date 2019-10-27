@@ -1,23 +1,12 @@
 
-----------------------------------------------------------------------------------
-|				Window name					|		Implememnted by 			  |
-|---------------------------------------------------------------------------------|
-|											|									  |
-|	Initial login/signup page				|		Natalia					 	  |
-|											|									  |
-|- - - - - - - - - - - - - - - - - - - - - -|- - - - - - - - - - - - - - - - - - -|
-|											|									  |
-|	Admin page								|		Christopher				 	  |
-|											|									  |
-|- - - - - - - - - - - - - - - - - - - - -- |- - - - - - - - - - - - - - - - - - -|
-|											|									  |
-|	Main page(displays all albums)			|		Christopher					  |
-|											|									  |
-|- - - - - - - - - - - - - - --  - - - - - -|- - - - - - - - - - - - - - - - - - -|
-|											|									  |
-|	Signle album page + Search for albums   |		Natalia & Christopher		  |
-|											|									  |
-|- - - - - - - - - - - - - - - - - - - - - -|- - - - - - - - - - - - - - - - - - -|
-|											|									  |
-|	Single photo page + Search for photos	|		Natalia						  |
-|___________________________________________|_____________________________________|					
+Window name 								Implemented by 
+
+Initial login/signup page					Natalia
+
+Admin page									Christopher
+
+Main page (All albums)						Christopher
+
+Single album page + Album Search			Natalia & Christopher
+
+Single photo page + Photo Search			Natalia
