@@ -1,0 +1,25 @@
+
+Window name 								Implemented by 
+
+Initial login/signup page:					Natalia
+User can create new account or login 
+into an existing one. 
+
+Admin page:									Christopher
+Admin can see, create or delete 
+users' accounts
+
+Main page: 									Christopher
+Lists all user's albums. Here users 
+can create/delete/rename albums.
+Search for photos by tags,date range 
+etc.
+
+Single album page:							Natalia & Christopher
+Dsiplays thumbnails of photos with
+their information. User can create/
+delete/edit photos
+
+Single photo page:							Natalia
+Displays single photo with its
+information
