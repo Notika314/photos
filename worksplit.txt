@@ -11,14 +11,14 @@ users' accounts
 
 Main page: 									Christopher
 Lists all user's albums. Here users 
-can create/delete/rename albums. User 
-can also search for photos by tags/
-date range etc.
+can create/delete/rename albums.
+Search for photos by tags,date range 
+etc.
 
 Single album page:							Natalia & Christopher
 Dsiplays thumbnails of photos with
 their information. User can create/
-delete/edit photos, search for photos 
+delete/edit photos
 
 Single photo page:							Natalia
 Displays single photo with its
