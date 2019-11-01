@@ -4,6 +4,6 @@ import java.io.Serializable;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 
-public class SongModel implements Serializable {
+public class PhotosModel implements Serializable {
 
 }
