@@ -21,6 +21,15 @@ public class User {
 		this.password = password;
 		users.add(this);
 	}
+	public static User findUser(String name, String password) {
+		if (users.size()<1) return null;
+		for (int i=0;i<users.size();i++) {
+			if (users.get(i).userName.contentEquals(name)&&users.get(i).password.contentEquals(password)) {
+				return users.get(i);
+			}
+		}
+		return null;
+	}
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;
 		User u = (User) o;

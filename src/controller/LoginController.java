@@ -3,18 +3,21 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
-public class PhotosController {
+public class LoginController {
 
+//	@FXML protected NavbarController navbarController;
+	
 	@FXML Button logInBtn;
 	@FXML Button signUpBtn;
 	@FXML Label signUpLbl;
@@ -23,16 +26,16 @@ public class PhotosController {
 	@FXML TextField loginUsrName;
 	@FXML PasswordField newUsrPw;
 	@FXML PasswordField confirmPw;
-	@FXML PasswordField loginPw;
+	@FXML PasswordField logInPw;
 	
 	
-
 	
-	public void start(Stage mainStage) throws FileNotFoundException {                		
-		getAllUsers();	
+	public void start(Stage mainStage) throws FileNotFoundException {  
+//		navbarController.setLoginController(this);
+		getAllUsersFromFile();	
 	}
 	
-	private void getAllUsers() throws FileNotFoundException {
+	private void getAllUsersFromFile() throws FileNotFoundException {
 		if (!new File("users.txt").exists()) {
 			return;
 		}
@@ -48,4 +51,21 @@ public class PhotosController {
 		}
 		sc.close();
 	}
+	
+	public void login(ActionEvent e) {
+		User user = User.findUser(loginUsrName.getText(),logInPw.getText());
+		if (user==null) {
+			logInLbl.setStyle("-fx-text-fill: red;");
+			logInLbl.setText("Incorrect username or password");
+		} else {
+			logInLbl.setStyle("-fx-text-fill: green;");
+			logInLbl.setText("Successful login");
+		}
+//		
+	}
+	public void signupPress(ActionEvent e) {
+		Button b = (Button)e.getSource();
+		System.out.println("b is "+b);
+	}
+	
 }
