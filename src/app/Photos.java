@@ -1,5 +1,6 @@
 package app;
 
+import java.io.File; 
 import java.io.IOException;
 
 import controller.PhotosController;
@@ -8,7 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,11 +21,13 @@ public class Photos extends Application {
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/photos.fxml"));   				
-		VBox root = (VBox)loader.load();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/view/login.fxml"));
+		GridPane root = loader.load();
+		
 		PhotosController listController = loader.getController();
 		listController.start(primaryStage);
-		Scene scene = new Scene(root, 900, 600);
+		Scene scene = new Scene(root, 500, 450);
 		// Enables us to drag the program window around.
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
