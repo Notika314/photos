@@ -5,12 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
@@ -61,8 +59,28 @@ public class LoginController {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
 		}
-//		
 	}
+	
+	public void signup(ActionEvent e) {
+		String name = newUsrName.getText();
+		String password = newUsrPw.getText();
+		String passwordConfirm = confirmPw.getText();
+		if (!password.equals(passwordConfirm)) {
+			signUpLbl.setStyle("-fx-text-fill: red;");
+			signUpLbl.setText("Passwords don't match");
+		} else {
+			if (User.usernameExists(name)) {
+				signUpLbl.setStyle("-fx-text-fill: red;");
+				signUpLbl.setText("Choose different username");
+			} else {
+				User u = new User(name, password);
+				signUpLbl.setStyle("-fx-text-fill: green;");
+				signUpLbl.setText("Welcome, "+name);
+			}
+		}
+	}
+	
+	
 	public void signupPress(ActionEvent e) {
 		Button b = (Button)e.getSource();
 		System.out.println("b is "+b);
