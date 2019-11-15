@@ -2,7 +2,7 @@ package app;
 
 import java.io.File; 
 import java.io.IOException;
-
+import controller.LoginController;
 import controller.PhotosController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
