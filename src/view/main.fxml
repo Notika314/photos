@@ -17,5 +17,5 @@
 	<fx:include fx:id="navbar" prefHeight="50.0" source="navbar.fxml" GridPane.rowIndex="1" />
   <children>
        <TextField fx:id="field" prefWidth="200.0" text="hello word"/>
-      </children>
+  </children>
 </GridPane>

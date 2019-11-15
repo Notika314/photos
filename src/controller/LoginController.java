@@ -74,11 +74,7 @@ public class LoginController {
 			Parent root = loader.load(); 
 			MainController mainController = loader.getController();
 			mainController.start(primaryStage);
-			Scene scene = new Scene(root, 500, 450);
-			// Enables us to drag the program window around.
-			
-	        
-	        // Removes the default file bar.
+			Scene scene = new Scene(root, 700, 550);
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 	        primaryStage.setScene(scene);
 	        root.requestFocus();
@@ -100,7 +96,7 @@ public class LoginController {
 			} else {
 				User u = new User(name, password);
 				signUpLbl.setStyle("-fx-text-fill: green;");
-				signUpLbl.setText("Welcome, "+name);
+				signUpLbl.setText("Created account successfully, "+name);
 			}
 		}
 	}
