@@ -68,10 +68,10 @@ public class User implements Serializable {
 	}
 	
 	
-	public addPhotoToAlbum(Album album, Photo photo) {
+	public void addPhotoToAlbum(Album album, String path,String caption) {
 		for (int i=0;i<userAlbums.size();i++) {
 			if (userAlbums.get(i).equals(album)) {
-				userAlbums.get(i).addPhoto(photo);
+				userAlbums.get(i).addPicture(path,caption);
 			}
 		}
 	}

@@ -15,18 +15,18 @@ public class Album implements Serializable {
 		this.pictures = new ArrayList<Picture>();
 	}
 	
-	public boolean pictureExists(String path) {
+	private boolean pictureExists(String path) {
 		for (int i=0;i<pictures.size();i++) {
 			if (pictures.get(i).path.equals(path)) return true;
 		}
 		return false;
 	}
 	
-	public boolean addPicture(String path) {
+	public boolean addPicture(String path, String caption) {
 		if (pictureExists(path)) {
 			return false;
 		} else {
-			Picture picture = new Picture(this.user,path);
+			Picture picture = new Picture(this.user,path,caption);
 			pictures.add(picture);
 			return true;
 		}
