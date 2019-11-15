@@ -1,12 +1,20 @@
 package controller;
 
 import java.util.*;
-
+//import controller.Album;
 public class User {
 	static ArrayList<User> users = new ArrayList<User>();
+	ArrayList<Album> albums = new ArrayList<Album>();
 	String userName;
 	String password;
 	ArrayList<Album> userAlbums;
+	
+	public boolean albumExists(String name) {
+		for (int i=0;i<albums.size();i++) {
+			if (albums.get(i).albumName.contentEquals(name)) return true;
+		}
+		return false;
+	}
 	
 	public static boolean userExists(String name) {
 		for (int i=0;i<users.size();i++) {
@@ -44,6 +52,15 @@ public class User {
 		}
 		return false;
 	}
+	public void createAlbum(String name) {
+		if (albumExists(name)) {
+			System.out.println("Album with such name already exists");
+			return;
+		}
+		Album album = new Album(name,this);
+		albums.add(album);
+	}
+	
 	
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;
