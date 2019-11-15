@@ -101,7 +101,7 @@ public class LoginController {
 			} else {
 				User u = new User(name, password);
 				signUpLbl.setStyle("-fx-text-fill: green;");
-				signUpLbl.setText("Welcome, "+name);
+				signUpLbl.setText("Created account successfully, "+name);
 			}
 		}
 	}

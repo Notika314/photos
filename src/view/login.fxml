@@ -21,7 +21,7 @@
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="500.0">
                   <children>
-                     <Label fx:id="logInLbl" layoutX="91.0" layoutY="45.0" prefHeight="32.0" prefWidth="210.0" text="Login">
+                     <Label fx:id="logInLbl" layoutX="91.0" layoutY="45.0" prefHeight="32.0" prefWidth="410.0" text="Login">
                         <font>
                            <Font size="21.0" />
                         </font>
@@ -60,7 +60,7 @@
                            <DropShadow />
                         </effect>
                      </Button>
-                     <Label fx:id="signUpLbl" layoutX="77.0" layoutY="37.0" prefHeight="23.0" prefWidth="186.0" text="Signup">
+                     <Label fx:id="signUpLbl" layoutX="77.0" layoutY="37.0" prefHeight="23.0" prefWidth="386.0" text="Signup">
                         <font>
                            <Font size="18.0" />
                         </font>
