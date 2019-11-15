@@ -27,7 +27,7 @@ public class Photos extends Application {
 		
 		LoginController loginController = loader.getController();
 		loginController.start(primaryStage);
-		Scene scene = new Scene(root, 500, 450);
+		Scene scene = new Scene(root, 700, 550);
 		// Enables us to drag the program window around.
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override

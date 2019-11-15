@@ -74,16 +74,16 @@ public class LoginController {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
 			Stage primaryStage = new Stage();
-					FXMLLoader loader = new FXMLLoader();
-					loader.setLocation(getClass().getResource("/view/main.fxml"));
-					GridPane root = loader.load(); 
-					MainController mainController = loader.getController();
-					mainController.start(primaryStage);
-					Scene scene = new Scene(root, 500, 450);
-					primaryStage.initStyle(StageStyle.UNDECORATED);
-				    primaryStage.setScene(scene);
-				    root.requestFocus();
-					primaryStage.show(); 
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/main.fxml"));
+			Parent root = loader.load(); 
+			MainController mainController = loader.getController();
+			mainController.start(primaryStage);
+			Scene scene = new Scene(root, 700, 550);
+			primaryStage.initStyle(StageStyle.UNDECORATED);
+	        primaryStage.setScene(scene);
+	        root.requestFocus();
+			primaryStage.show(); 
 		}
 	}
 	

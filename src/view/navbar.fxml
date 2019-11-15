@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="navbar" prefHeight="30.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhotosController">
+<HBox fx:id="navbar" prefHeight="30.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhotosController">
    <children>
       <Pane prefHeight="30.0" prefWidth="503.0">
          <children>
@@ -16,12 +16,12 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutX="471.0" layoutY="1.0" mnemonicParsing="false" text="X">
+            <Button layoutX="671.0" layoutY="1.0" mnemonicParsing="false" text="X">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="444.0" mnemonicParsing="false" text="-">
+            <Button layoutX="644.0" mnemonicParsing="false" text="-">
                <font>
                   <Font size="15.0" />
                </font>
