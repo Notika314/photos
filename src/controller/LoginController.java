@@ -9,17 +9,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
-<<<<<<< HEAD
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-=======
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
->>>>>>> f79d15a3da0ccca4df103a05465bb287250ec75f
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -78,34 +74,16 @@ public class LoginController {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
 			Stage primaryStage = new Stage();
-<<<<<<< HEAD
-						FXMLLoader loader = new FXMLLoader();
-						loader.setLocation(getClass().getResource("/view/main.fxml"));
-						Parent root = loader.load(); 
-						MainController mainController = loader.getController();
-						mainController.start(primaryStage);
-						Scene scene = new Scene(root, 500, 450);
-				        
-						primaryStage.initStyle(StageStyle.UNDECORATED);
-				        primaryStage.setScene(scene);
-				        root.requestFocus();
-						primaryStage.show(); 
-=======
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/main.fxml"));
-			Parent root = loader.load(); 
-			MainController mainController = loader.getController();
-			mainController.start(primaryStage);
-			Scene scene = new Scene(root, 500, 450);
-			// Enables us to drag the program window around.
-			
-	        
-	        // Removes the default file bar.
-			primaryStage.initStyle(StageStyle.UNDECORATED);
-	        primaryStage.setScene(scene);
-	        root.requestFocus();
-			primaryStage.show(); 
->>>>>>> f79d15a3da0ccca4df103a05465bb287250ec75f
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(getClass().getResource("/view/main.fxml"));
+					GridPane root = loader.load(); 
+					MainController mainController = loader.getController();
+					mainController.start(primaryStage);
+					Scene scene = new Scene(root, 500, 450);
+					primaryStage.initStyle(StageStyle.UNDECORATED);
+				    primaryStage.setScene(scene);
+				    root.requestFocus();
+					primaryStage.show(); 
 		}
 	}
 	
