@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
-
+import model.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;

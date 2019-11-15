@@ -3,7 +3,7 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+import model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
