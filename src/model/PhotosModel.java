@@ -6,4 +6,5 @@ import java.io.ObjectInputStream;
 
 public class PhotosModel implements Serializable {
 
+	
 }

@@ -6,6 +6,8 @@ public class User {
 	static ArrayList<User> users = new ArrayList<User>();
 	String userName;
 	String password;
+	ArrayList<Album> userAlbums;
+	
 	public static boolean userExists(String name) {
 		for (int i=0;i<users.size();i++) {
 			if (users.size()>0 && users.get(i).userName.contentEquals(name)) return true;
@@ -19,6 +21,7 @@ public class User {
 		} else {
 			this.userName = name;
 			this.password = password;
+			this.userAlbums = new ArrayList<Album>();
 			users.add(this);
 		}
 	}
