@@ -4,14 +4,13 @@ import java.io.*;
 
 public class User implements Serializable {
 	static ArrayList<User> users = new ArrayList<User>();
-	ArrayList<Album> albums = new ArrayList<Album>();
 	public String userName;
 	public String password;
 	ArrayList<Album> userAlbums;
 	
 	public boolean albumExists(String name) {
-		for (int i=0;i<albums.size();i++) {
-			if (albums.get(i).albumName.contentEquals(name)) return true;
+		for (int i=0;i<userAlbums.size();i++) {
+			if (userAlbums.get(i).albumName.contentEquals(name)) return true;
 		}
 		return false;
 	}
@@ -59,9 +58,33 @@ public class User implements Serializable {
 			return;
 		}
 		Album album = new Album(name,this);
-		albums.add(album);
+		userAlbums.add(album);
 	}
 	
+	public void renameAlbum(Album album, String newName) {
+		for (int i=0;i<userAlbums.size();i++) {
+			if (userAlbums.get(i).equals(album)) userAlbums.get(i).albumName = newName;
+		}
+	}
+	
+	
+	public addPhotoToAlbum(Album album, Photo photo) {
+		for (int i=0;i<userAlbums.size();i++) {
+			if (userAlbums.get(i).equals(album)) {
+				userAlbums.get(i).addPhoto(photo);
+			}
+		}
+	}
+	public void deleteAlbum(Album album) {
+		for (int i=0;i<userAlbums.size();i++) {
+			
+			if (userAlbums.get(i).equals(album)) {
+//			need to remove every picture before removing an album
+//				albums.get(i).empty();
+				userAlbums.remove(i);
+			}
+		}
+	}
 	
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;

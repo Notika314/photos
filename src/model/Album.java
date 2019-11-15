@@ -2,9 +2,8 @@ package model;
 import java.io.*;
 import java.util.ArrayList;
 
-import controller.Picture;
 
-public class Album implements Serializable{
+public class Album implements Serializable {
 
 	public String albumName;
 	User user;
@@ -16,4 +15,36 @@ public class Album implements Serializable{
 		this.pictures = new ArrayList<Picture>();
 	}
 	
+	public boolean pictureExists(String path) {
+		for (int i=0;i<pictures.size();i++) {
+			if (pictures.get(i).path.equals(path)) return true;
+		}
+		return false;
+	}
+	
+	public boolean addPicture(String path) {
+		if (pictureExists(path)) {
+			return false;
+		} else {
+			Picture picture = new Picture(this.user,path);
+			pictures.add(picture);
+			return true;
+		}
+	}
+	public boolean removePicture(Picture picture) {
+		for (int i=0;i<pictures.size();i++) {
+			if (pictures.get(i).equals(picture) ) {
+				pictures.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean equals(Object o) {
+		if (!( o instanceof Album)) return false;
+		Album a = (Album) o;
+		if (a.albumName.equals(this.albumName)) return true;
+		else return false;
+	}
 }
