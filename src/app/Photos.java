@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import controller.LoginController;
 public class Photos extends Application {
 
 	private double xOffset = 0;
@@ -25,8 +25,8 @@ public class Photos extends Application {
 		loader.setLocation(getClass().getResource("/view/login.fxml"));
 		GridPane root = loader.load();
 		
-		PhotosController listController = loader.getController();
-		listController.start(primaryStage);
+		LoginController loginController = loader.getController();
+		loginController.start(primaryStage);
 		Scene scene = new Scene(root, 500, 450);
 		// Enables us to drag the program window around.
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
