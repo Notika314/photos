@@ -73,6 +73,7 @@ public class LoginController {
 		} else {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
+			System.out.println("successful login");
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/main.fxml"));
