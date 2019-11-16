@@ -1,23 +1,25 @@
 package model;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
 
 public class User implements Serializable {
 	static ArrayList<User> users = new ArrayList<User>();
 	public String userName;
 	public String password;
-	ArrayList<Album> userAlbums;
+	protected ArrayList<Album> userAlbums;
+	public static final String storeDir = "data/users";
+//	protected ArrayList<Picture> userPictures;
 	
 	public boolean albumExists(String name) {
 		for (int i=0;i<userAlbums.size();i++) {
-			if (userAlbums.get(i).albumName.contentEquals(name)) return true;
+			if (userAlbums.get(i).albumName.equals(name)) return true;
 		}
 		return false;
 	}
 	
 	public static boolean userExists(String name) {
 		for (int i=0;i<users.size();i++) {
-			if (users.size()>0 && users.get(i).userName.contentEquals(name)) return true;
+			if (users.size()>0 && users.get(i).userName.equals(name)) return true;
 		}
 		return false;
 	}
@@ -29,13 +31,14 @@ public class User implements Serializable {
 			this.userName = name;
 			this.password = password;
 			this.userAlbums = new ArrayList<Album>();
+//			this.userPictures = new ArrayList<Picture>();
 			users.add(this);
 		}
 	}
 	public static User findUser(String name, String password) {
 		if (users.size()<1) return null;
 		for (int i=0;i<users.size();i++) {
-			if (users.get(i).userName.contentEquals(name)&&users.get(i).password.contentEquals(password)) {
+			if (users.get(i).userName.equals(name)&&users.get(i).password.equals(password)) {
 				return users.get(i);
 			}
 		}
@@ -62,6 +65,7 @@ public class User implements Serializable {
 	}
 	
 	public void renameAlbum(Album album, String newName) {
+		if (albumExists(newName)) return;	//can't rename if the album with newName already exists
 		for (int i=0;i<userAlbums.size();i++) {
 			if (userAlbums.get(i).equals(album)) userAlbums.get(i).albumName = newName;
 		}
@@ -71,8 +75,25 @@ public class User implements Serializable {
 	public void addPhotoToAlbum(Album album, String path,String caption) {
 		for (int i=0;i<userAlbums.size();i++) {
 			if (userAlbums.get(i).equals(album)) {
-				userAlbums.get(i).addPicture(path,caption);
+				Picture picture = new Picture(album,path,caption);
+				userAlbums.get(i).addPicture(picture);
 			}
+		}
+	}
+	
+	public void movePicture(Picture picture, Album newAlbum) {
+		if (albumExists(newAlbum.albumName)) {
+			picture.album = newAlbum;
+			picture.album.removePicture(picture);
+			newAlbum.addPicture(picture);
+		}
+	}
+	
+	public void copyPicture(Picture picture,Album newAlbum) {
+		if (albumExists(newAlbum.albumName)) {
+			Picture newPicture = new Picture(newAlbum,picture.path, picture.caption);
+			newPicture.tags = picture.tags;
+			newAlbum.addPicture(newPicture);
 		}
 	}
 	public void deleteAlbum(Album album) {
@@ -81,6 +102,7 @@ public class User implements Serializable {
 			if (userAlbums.get(i).equals(album)) {
 //			need to remove every picture before removing an album
 //				albums.get(i).empty();
+				
 				userAlbums.remove(i);
 			}
 		}
@@ -91,5 +113,10 @@ public class User implements Serializable {
 		User u = (User) o;
 		if (u.userName.equals(this.userName)) return true;
 		else return false;
+	}
+	public static void writeUser (User u) throws IOException {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storeDir + File.separator +u.userName));
+		oos.writeObject(u); 
+		
 	}
 }
