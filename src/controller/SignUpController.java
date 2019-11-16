@@ -1,4 +1,5 @@
 package controller;
+
 import javafx.scene.Parent;
 import controller.MainController;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,8 @@ import javafx.stage.StageStyle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Stage;
-public class LoginController {
+
+public class SignUpController {
 
 //	@FXML protected NavbarController navbarController;
 	
@@ -44,8 +46,6 @@ public class LoginController {
 	@FXML PasswordField confirmPw;
 	@FXML PasswordField logInPw;
 	
-	protected PhotosController photosController;
-
 	
 	
 	
@@ -71,28 +71,31 @@ public class LoginController {
 		sc.close();
 	}
 	
-	public void login(ActionEvent e) throws Exception {
-		System.out.println("in login");
-		User user = User.findUser(loginUsrName.getText(),logInPw.getText());
-		if (user==null) {
-			logInLbl.setStyle("-fx-text-fill: red;");
-			logInLbl.setText("Incorrect username or password");
+	public void signup(ActionEvent e) {
+		String name = newUsrName.getText();
+		String password = newUsrPw.getText();
+		String passwordConfirm = confirmPw.getText();
+		if (!password.equals(passwordConfirm)) {
+			signUpLbl.setStyle("-fx-text-fill: red;");
+			signUpLbl.setText("Passwords don't match");
 		} else {
-			logInLbl.setStyle("-fx-text-fill: green;");
-			logInLbl.setText("Successful login");
-			System.out.println("successful login");
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/main.fxml"));
-			Parent root = loader.load(); 
-			MainController mainController = loader.getController();
-			mainController.start(primaryStage);
-			Scene scene = new Scene(root, 700, 550);
-			primaryStage.initStyle(StageStyle.UNDECORATED);
-	        primaryStage.setScene(scene);
-	        root.requestFocus();
-			primaryStage.show(); 
+			if (User.usernameExists(name)) {
+				signUpLbl.setStyle("-fx-text-fill: red;");
+				signUpLbl.setText("Choose different username");
+			} else {
+				User u = new User(name, password);
+				signUpLbl.setStyle("-fx-text-fill: green;");
+				signUpLbl.setText("Created account successfully, "+name);
+			}
 		}
+	}
+	
+	
+	public void returnLogin() throws IOException {
+		Pane pane = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
+		System.out.println(pane);
+		Photos.root.setCenter(pane);
+
 	}
 	
 	public void signupPress(ActionEvent e) {
@@ -100,9 +103,5 @@ public class LoginController {
 		System.out.println("b is "+b);
 	}
 	
-	public void signUp() throws IOException {
-		Pane pane = FXMLLoader.load(getClass().getResource("/view/signup.fxml"));
-		Photos.root.setCenter(pane);
-	}
-
+	
 }

@@ -13,9 +13,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-	<fx:include fx:id="navbar" prefHeight="50.0" source="navbar.fxml" GridPane.rowIndex="1" />
-  <children>
-       <TextField fx:id="field" prefWidth="200.0" text="hello word"/>
-  </children>
+<GridPane xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.MainController">
+	<fx:include fx:id="navbar" prefHeight="50.0"
+		source="navbar.fxml" GridPane.rowIndex="1" />
+	<children>
+		<TextField fx:id="field" prefWidth="200.0" text="hello word" />
+	</children>
 </GridPane>

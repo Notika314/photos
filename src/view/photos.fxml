@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhotosController">
-</VBox>
+<BorderPane fx:id="main" maxHeight="-Infinity"
+	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+	prefHeight="900.0" prefWidth="1440.0"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.PhotosController">
+
+	<top>
+		<Pane prefHeight="35.0" prefWidth="1440.0"
+			BorderPane.alignment="CENTER">
+			<children>
+				<fx:include fx:id="navbar" source="navbar.fxml" />
+			</children>
+		</Pane>
+	</top>
+	<center>
+		<Pane fx:id="centerPane" prefHeight="830.0" prefWidth="1440.0"
+			BorderPane.alignment="CENTER">
+			<children>
+				<fx:include fx:id="login" source="login.fxml" />
+			</children>
+		</Pane>
+	</center>
+	<bottom>
+		<Pane prefHeight="35.0" prefWidth="1440.0"
+			style="-fx-background-color: DARKGREY;" BorderPane.alignment="CENTER" />
+	</bottom>
+</BorderPane>

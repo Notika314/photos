@@ -6,10 +6,12 @@ import java.util.Scanner;
 import model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
@@ -23,15 +25,14 @@ public class PhotosController {
 	@FXML TextField loginUsrName;
 	@FXML PasswordField newUsrPw;
 	@FXML PasswordField confirmPw;
-	@FXML PasswordField loginPw;
-	
-	
+	@FXML PasswordField loginPw;	
 
 	
 	public void start(Stage mainStage) throws FileNotFoundException {                		
 		getAllUsers();	
 	}
 	
+	//I'm Keeping this here for now but I feel like it is a relic.
 	private void getAllUsers() throws FileNotFoundException {
 		if (!new File("users.txt").exists()) {
 			return;
@@ -48,4 +49,5 @@ public class PhotosController {
 		}
 		sc.close();
 	}
+	
 }
