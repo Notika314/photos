@@ -1,5 +1,5 @@
 package controller;
-
+import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -28,26 +28,26 @@ public class PhotosController {
 	@FXML PasswordField loginPw;	
 
 	
-	public void start(Stage mainStage) throws FileNotFoundException {                		
-		getAllUsers();	
+	public void start(Stage mainStage) throws FileNotFoundException, IOException {                		
+//		getAllUsers();	
 	}
 	
 	//I'm Keeping this here for now but I feel like it is a relic.
-	private void getAllUsers() throws FileNotFoundException {
-		if (!new File("users.txt").exists()) {
-			return;
-		}
-		Scanner sc = new Scanner(new File("users.txt"));
-		while (sc.hasNextLine()) {
-			String str = sc.nextLine();
-			String split[] = str.split("\t");
-			User u;
-			if (split.length==2) {
-				u = new User(split[0],split[1]);
-				System.out.println("Creating new user: "+u.userName+" "+ u.password);
-			} 
-		}
-		sc.close();
-	}
+	
+//	private void getAllUsers() throws FileNotFoundException, IOException {
+//		if (!new File("users.txt").exists()) {
+//			return;
+//		}
+//		Scanner sc = new Scanner(new File("users.txt"));
+//		while (sc.hasNextLine()) {
+//			String str = sc.nextLine();
+//			String split[] = str.split("\t");
+//			if (split.length==2) {
+//				User u = new User(split[0],split[1]);
+////				System.out.println("Creating new user: "+u.userName+" "+ u.password);
+//			} 
+//		}
+//		sc.close();
+//	}
 	
 }

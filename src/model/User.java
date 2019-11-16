@@ -7,7 +7,7 @@ public class User implements Serializable {
 	public String userName;
 	public String password;
 	protected ArrayList<Album> userAlbums;
-	public static final String storeDir = "data/users";
+	public static final String storeDir = "data";
 //	protected ArrayList<Picture> userPictures;
 	
 	public boolean albumExists(String name) {
@@ -23,7 +23,7 @@ public class User implements Serializable {
 		}
 		return false;
 	}
-	public User(String name, String password) {
+	public User(String name, String password) throws IOException {
 		if (User.userExists(name)) {
 			System.out.println("Choose different username");
 			
@@ -33,6 +33,7 @@ public class User implements Serializable {
 			this.userAlbums = new ArrayList<Album>();
 //			this.userPictures = new ArrayList<Picture>();
 			users.add(this);
+			User.writeUser(this);
 		}
 	}
 	public static User findUser(String name, String password) {
@@ -100,12 +101,15 @@ public class User implements Serializable {
 		for (int i=0;i<userAlbums.size();i++) {
 			
 			if (userAlbums.get(i).equals(album)) {
-//			need to remove every picture before removing an album
-//				albums.get(i).empty();
-				
+//			need to remove every picture before removing an album;		
 				userAlbums.remove(i);
 			}
 		}
+	}
+	
+	public void defineNewTag(String newTag) {
+		if (Tag.hasaType(newTag)) return;
+		Tag.createNewTagType(newTag);
 	}
 	
 	public boolean equals(Object o) {
@@ -115,8 +119,11 @@ public class User implements Serializable {
 		else return false;
 	}
 	public static void writeUser (User u) throws IOException {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storeDir + File.separator +u.userName));
+		String storeFile = "data/users/"+u.userName+".ser"; 
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storeFile));
+		System.out.println("writing new user to "+ storeFile);
 		oos.writeObject(u); 
+		oos.close();
 		
 	}
 }

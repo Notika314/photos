@@ -31,7 +31,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Stage;
-
+import java.io.*;
 public class SignUpController {
 
 //	@FXML protected NavbarController navbarController;
@@ -49,12 +49,12 @@ public class SignUpController {
 	
 	
 	
-	public void start(Stage mainStage) throws FileNotFoundException {  
+	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
 //		navbarController.setLoginController(this);
 		getAllUsersFromFile();	
 	}
 	
-	private void getAllUsersFromFile() throws FileNotFoundException {
+	private void getAllUsersFromFile() throws FileNotFoundException,IOException {
 		if (!new File("users.txt").exists()) {
 			return;
 		}
@@ -71,7 +71,7 @@ public class SignUpController {
 		sc.close();
 	}
 	
-	public void signup(ActionEvent e) {
+	public void signup(ActionEvent e) throws IOException {
 		String name = newUsrName.getText();
 		String password = newUsrPw.getText();
 		String passwordConfirm = confirmPw.getText();

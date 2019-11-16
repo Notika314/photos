@@ -9,27 +9,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-
 import app.Photos;
 import javafx.event.ActionEvent;
 import model.User;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.control.PasswordField;
-import javafx.stage.StageStyle;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Stage;
 public class LoginController {
 
 //	@FXML protected NavbarController navbarController;
@@ -49,12 +37,12 @@ public class LoginController {
 	
 	
 	
-	public void start(Stage mainStage) throws FileNotFoundException {  
+	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
 //		navbarController.setLoginController(this);
 		getAllUsersFromFile();	
 	}
 	
-	private void getAllUsersFromFile() throws FileNotFoundException {
+	private void getAllUsersFromFile() throws FileNotFoundException , IOException {
 		if (!new File("users.txt").exists()) {
 			return;
 		}
