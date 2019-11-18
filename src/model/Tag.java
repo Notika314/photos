@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Tag implements Serializable {
-	String type;
-	String value;
+	public String type;
+	public String value;
 	static ArrayList<String> tagTypes = new ArrayList<String>();
 	public Tag(String type,String value) {
 		if (tagTypes.size()==0) {

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Album implements Serializable {
 
 	public String albumName;
-	User user;
-	ArrayList<Picture> pictures;
+	public User user;
+	public ArrayList<Picture> pictures;
 	
 	public Album(String albumName, User user) {
 		this.albumName = albumName;

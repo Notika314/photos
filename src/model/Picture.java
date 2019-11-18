@@ -8,7 +8,7 @@ public class Picture implements Serializable{
 	private boolean locationTagIsSet=false;
 	public Album album;
 	public User user;
-	ArrayList<Tag> tags;
+	public ArrayList<Tag> tags;
 	public Picture(Album album, String path, String caption) {
 		this.path = path;
 		this.album = album;

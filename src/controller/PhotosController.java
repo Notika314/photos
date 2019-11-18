@@ -28,10 +28,29 @@ public class PhotosController {
 	@FXML PasswordField loginPw;	
 
 	
-	public void start(Stage mainStage) throws FileNotFoundException, IOException {                		
-//		getAllUsers();	
+	public void start(Stage mainStage) throws FileNotFoundException, IOException , ClassNotFoundException{ 
+		getAllUsers();	
 	}
 	
+	public void getAllUsers() throws FileNotFoundException, IOException,  ClassNotFoundException {
+		File dir = new File("data/users");
+		File[] files = dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.toLowerCase().endsWith("ser");
+			}
+		});
+		for (int i=0;i<files.length;i++) {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(files[i]));
+			User user = (User)ois.readObject();
+			System.out.println("Reading user "+ user.userName +", with password "+user.password +" from a file .");
+			ois.close();
+			User.users.add(user);
+		}
+		System.out.println("All current users are: :");
+		for (int i=0;i<User.users.size();i++) {
+			System.out.println(User.users.get(i).userName+", "+ User.users.get(i).password);
+		}
+	}
 	//I'm Keeping this here for now but I feel like it is a relic.
 	
 //	private void getAllUsers() throws FileNotFoundException, IOException {

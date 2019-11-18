@@ -3,10 +3,10 @@ import java.util.*;
 import java.io.*;
 
 public class User implements Serializable {
-	static ArrayList<User> users = new ArrayList<User>();
+	public static ArrayList<User> users = new ArrayList<User>();
 	public String userName;
 	public String password;
-	protected ArrayList<Album> userAlbums;
+	public ArrayList<Album> userAlbums;
 	public static final String storeDir = "data";
 //	protected ArrayList<Picture> userPictures;
 	
@@ -33,7 +33,6 @@ public class User implements Serializable {
 			this.userAlbums = new ArrayList<Album>();
 //			this.userPictures = new ArrayList<Picture>();
 			users.add(this);
-			User.writeUser(this);
 		}
 	}
 	public static User findUser(String name, String password) {
@@ -126,4 +125,12 @@ public class User implements Serializable {
 		oos.close();
 		
 	}
+	
+//	public static User readUser(String fileName) throws IOException, ClassNotFoundException {
+//		ObjectInputStream ois = new ObjectInputStream(
+//				new FileInputStream(storeDir + File.separator + storeFile));
+//				GeomApp gapp = (GeomApp)ois.readObject();
+//				return gapp; 
+//		return new User();
+//	}
 }
