@@ -61,6 +61,18 @@ public class LoginController {
 	
 	public void login(ActionEvent e) throws Exception {
 		System.out.println("in login");
+		if (loginUsrName.getText().equals("admin")) {
+			if (logInPw.getText().equals("password")) {
+				Pane pane = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+				Photos.root.setCenter(pane);
+				return;
+			}
+			else {
+				logInLbl.setStyle("-fx-text-fill: red;");
+				logInLbl.setText("Incorrect username or password");
+				return;
+			}
+		}
 		User user = User.findUser(loginUsrName.getText(),logInPw.getText());
 		if (user==null) {
 			logInLbl.setStyle("-fx-text-fill: red;");
@@ -69,6 +81,9 @@ public class LoginController {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
 			System.out.println("successful login");
+			Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+			Photos.root.setCenter(pane);
+			/*
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/main.fxml"));
@@ -79,7 +94,8 @@ public class LoginController {
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 	        primaryStage.setScene(scene);
 	        root.requestFocus();
-			primaryStage.show(); 
+			primaryStage.show();
+			*/ 
 		}
 	}
 	

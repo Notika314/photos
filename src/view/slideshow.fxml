@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" stylesheets="@inAlbumTab.css"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.SlideshowController">
+	<children>
+		<VBox prefHeight="200.0" prefWidth="100.0">
+			<children>
+				<ImageView fitHeight="780.0" fitWidth="1440.0"
+					pickOnBounds="true" preserveRatio="true" />
+				<AnchorPane prefHeight="50.0" prefWidth="1440.0">
+					<children>
+						<Button mnemonicParsing="false" prefHeight="50.0"
+							prefWidth="480.0" style="-fx-background-radius: 0;" text="Button" />
+						<Button layoutX="480.0" mnemonicParsing="false"
+							prefHeight="50.0" prefWidth="480.0"
+							style="-fx-background-radius: 0;" text="Button" />
+						<Button layoutX="960.0" mnemonicParsing="false"
+							prefHeight="50.0" prefWidth="480.0"
+							style="-fx-background-radius: 0;" text="Button" />
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+	</children>
+</Pane>

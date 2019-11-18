@@ -1,0 +1,16 @@
+.tab{
+	-fx-pref-width:138;
+	-fx-pref-height:35;
+}
+.tab-header-background {
+	-fx-background-color:transparent;
+}
+.tab-down-button{
+	-fx-padding:0;
+}
+.tab-down-button .arrow{
+	-fx-padding:0;
+}
+.tab-pane{	
+	-fx-padding:0 0 0 0;
+}

@@ -12,55 +12,72 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox prefHeight="830.0" prefWidth="1440.0">
-         <children>
-            <ListView minWidth="480.0" prefHeight="830.0" prefWidth="480.0" />
-            <VBox prefHeight="830.0" prefWidth="960.0">
-               <children>
-                  <AnchorPane prefHeight="415.0" prefWidth="960.0">
-                     <children>
-                        <TextField fx:id="newUsrName" layoutX="320.0" layoutY="81.0" prefHeight="42.0" prefWidth="320.0" promptText="Username">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </TextField>
-                        <PasswordField fx:id="newUsrPw" layoutX="320.0" layoutY="187.0" prefHeight="42.0" prefWidth="320.0" promptText="Password">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </PasswordField>
-                        <PasswordField fx:id="confirmPw" layoutX="320.0" layoutY="292.0" prefHeight="42.0" prefWidth="320.0" promptText="Confirm password">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </PasswordField>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="415.0" prefWidth="960.0">
-                     <children>
-                        <Button fx:id="createAccount" alignment="CENTER" layoutX="330.0" layoutY="83.0" mnemonicParsing="false" opacity="0.96" prefHeight="37.0" prefWidth="300.0" text="Create New Account" textAlignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </Button>
-                        <Button fx:id="deleteSelected" alignment="CENTER" layoutX="330.0" layoutY="208.0" mnemonicParsing="false" opacity="0.96" prefHeight="37.0" prefWidth="300.0" text="Delete Selected Account" textAlignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.AdminController">
+	<children>
+		<HBox prefHeight="830.0" prefWidth="1440.0">
+			<children>
+				<ListView minWidth="480.0" prefHeight="830.0"
+					prefWidth="480.0" />
+				<VBox prefHeight="830.0" prefWidth="960.0">
+					<children>
+						<AnchorPane prefHeight="415.0" prefWidth="960.0">
+							<children>
+								<TextField fx:id="newUsrName" layoutX="320.0"
+									layoutY="81.0" prefHeight="42.0" prefWidth="320.0"
+									promptText="Username">
+									<font>
+										<Font size="21.0" />
+									</font>
+								</TextField>
+								<PasswordField fx:id="newUsrPw" layoutX="320.0"
+									layoutY="187.0" prefHeight="42.0" prefWidth="320.0"
+									promptText="Password">
+									<font>
+										<Font size="21.0" />
+									</font>
+								</PasswordField>
+								<PasswordField fx:id="confirmPw" layoutX="320.0"
+									layoutY="292.0" prefHeight="42.0" prefWidth="320.0"
+									promptText="Confirm password">
+									<font>
+										<Font size="21.0" />
+									</font>
+								</PasswordField>
+							</children>
+						</AnchorPane>
+						<AnchorPane prefHeight="415.0" prefWidth="960.0">
+							<children>
+								<Button fx:id="createAccount" alignment="CENTER"
+									layoutX="330.0" layoutY="83.0" mnemonicParsing="false"
+									opacity="0.96" prefHeight="37.0" prefWidth="300.0"
+									text="Create New Account" textAlignment="CENTER">
+									<font>
+										<Font size="21.0" />
+									</font>
+									<effect>
+										<DropShadow />
+									</effect>
+								</Button>
+								<Button fx:id="deleteSelected" alignment="CENTER"
+									layoutX="330.0" layoutY="208.0" mnemonicParsing="false"
+									opacity="0.96" prefHeight="37.0" prefWidth="300.0"
+									text="Delete Selected Account" textAlignment="CENTER">
+									<font>
+										<Font size="21.0" />
+									</font>
+									<effect>
+										<DropShadow />
+									</effect>
+								</Button>
+							</children>
+						</AnchorPane>
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+	</children>
 </Pane>
