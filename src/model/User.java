@@ -7,7 +7,9 @@ public class User implements Serializable {
 	public String userName;
 	public String password;
 	public ArrayList<Album> userAlbums;
+	public static User curr;
 	public static final String storeDir = "data";
+	static final long serialVersionUID = 1L;
 //	protected ArrayList<Picture> userPictures;
 	
 	public boolean albumExists(String name) {

@@ -10,42 +10,61 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1440.0" stylesheets="@inAlbumTab.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InAlbumController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" stylesheets="@inAlbumTab.css"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.InAlbumController">
 	<children>
 		<HBox prefHeight="830.0" prefWidth="1440.0">
 			<children>
-				<ScrollPane hbarPolicy="NEVER" prefHeight="830.0" prefWidth="864.0" vbarPolicy="NEVER">
+				<ScrollPane hbarPolicy="NEVER" prefHeight="830.0"
+					prefWidth="864.0" vbarPolicy="NEVER">
 					<content>
 						<TilePane fx:id="tiles" prefHeight="830.0" />
 					</content>
 				</ScrollPane>
 				<VBox prefHeight="830.0" prefWidth="720.0">
 					<children>
-						<TabPane prefHeight="830.0" prefWidth="576.0" tabClosingPolicy="UNAVAILABLE">
+						<TabPane prefHeight="830.0" prefWidth="576.0"
+							tabClosingPolicy="UNAVAILABLE">
 							<tabs>
-								<Tab closable="false" style="-fx-background-radius: 0;" text="Add/Delete">
+								<Tab closable="false" style="-fx-background-radius: 0;"
+									text="Add/Delete">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="576.0" />
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="830.0" prefWidth="576.0" />
 									</content>
 								</Tab>
-								<Tab closable="false" style="-fx-background-radius: 0;" text="Captions/Tags">
+								<Tab closable="false" style="-fx-background-radius: 0;"
+									text="Captions/Tags">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="515.0" prefWidth="960.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="515.0" prefWidth="960.0">
 											<children>
-												<VBox prefHeight="788.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+												<VBox prefHeight="788.0" prefWidth="576.0"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 													<children>
-														<AnchorPane prefHeight="210.0" prefWidth="200.0" />
+														<AnchorPane prefHeight="210.0"
+															prefWidth="200.0" />
 														<ListView prefHeight="308.0" prefWidth="576.0" />
-														<TabPane prefHeight="270.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+														<TabPane prefHeight="270.0" prefWidth="200.0"
+															tabClosingPolicy="UNAVAILABLE">
 															<tabs>
-																<Tab style="-fx-pref-width: 276;" text="Untitled Tab 1">
+																<Tab style="-fx-pref-width: 276;"
+																	text="Untitled Tab 1">
 																	<content>
-																		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="200.0" />
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="220.0" prefWidth="200.0" />
 																	</content>
 																</Tab>
-																<Tab style="-fx-pref-width: 276;" text="Untitled Tab 2">
+																<Tab style="-fx-pref-width: 276;"
+																	text="Untitled Tab 2">
 																	<content>
-																		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="180.0" prefWidth="200.0" />
 																	</content>
 																</Tab>
 															</tabs>
@@ -56,14 +75,20 @@
 										</AnchorPane>
 									</content>
 								</Tab>
-								<Tab closable="false" style="-fx-background-radius: 0;" text="Move/Copy">
+								<Tab closable="false" style="-fx-background-radius: 0;"
+									text="Move/Copy">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="180.0" prefWidth="200.0">
 											<children>
-												<VBox layoutX="163.0" layoutY="60.0" prefHeight="788.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+												<VBox layoutX="163.0" layoutY="60.0" prefHeight="788.0"
+													prefWidth="576.0" AnchorPane.bottomAnchor="0.0"
+													AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+													AnchorPane.topAnchor="0.0">
 													<children>
 														<ListView prefHeight="591.0" prefWidth="200.0" />
-														<AnchorPane prefHeight="197.0" prefWidth="200.0" />
+														<AnchorPane prefHeight="197.0"
+															prefWidth="200.0" />
 													</children>
 												</VBox>
 											</children>

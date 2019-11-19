@@ -42,6 +42,8 @@ public class LoginController {
 		getAllUsersFromFile();	
 	}
 	
+	
+	
 	private void getAllUsersFromFile() throws FileNotFoundException , IOException {
 		if (!new File("users.txt").exists()) {
 			return;
@@ -59,7 +61,7 @@ public class LoginController {
 		sc.close();
 	}
 	
-	public void login(ActionEvent e) throws Exception {
+	public void login(ActionEvent e) throws IOException {
 		System.out.println("in login");
 		if (loginUsrName.getText().equals("admin")) {
 			if (logInPw.getText().equals("password")) {
@@ -81,8 +83,22 @@ public class LoginController {
 			logInLbl.setStyle("-fx-text-fill: green;");
 			logInLbl.setText("Successful login");
 			System.out.println("successful login");
-			Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+			User.curr = user;
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/navbar.fxml"));
+			Photos.root.setTop(loader.load());
+			NavbarController cont = loader.getController();
+			cont.visHome();
+			cont.visLog();
+			cont.disLog();
+			loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/album.fxml"));
+			Pane pane = loader.load();
+			AlbumController temp = loader.getController();
+			//Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 			Photos.root.setCenter(pane);
+			temp.start();
+			
 			/*
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
@@ -98,7 +114,7 @@ public class LoginController {
 			*/ 
 		}
 	}
-	
+		
 	public void signupPress(ActionEvent e) {
 		Button b = (Button)e.getSource();
 		System.out.println("b is "+b);

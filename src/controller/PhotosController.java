@@ -26,10 +26,15 @@ public class PhotosController {
 	@FXML PasswordField newUsrPw;
 	@FXML PasswordField confirmPw;
 	@FXML PasswordField loginPw;	
+	
+	@FXML protected NavbarController navbarController;
+	@FXML protected LoginController loginController;
+	@FXML protected SignUpController signupController;
 
 	
 	public void start(Stage mainStage) throws FileNotFoundException, IOException , ClassNotFoundException{ 
 		getAllUsers();	
+		navbarController.setPhotosController(this);
 	}
 	
 	public void getAllUsers() throws FileNotFoundException, IOException,  ClassNotFoundException {

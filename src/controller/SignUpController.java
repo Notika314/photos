@@ -46,6 +46,9 @@ public class SignUpController {
 	@FXML PasswordField confirmPw;
 	@FXML PasswordField logInPw;
 	
+	@FXML protected PhotosController photosController;
+
+	
 	
 	
 	
@@ -86,6 +89,7 @@ public class SignUpController {
 				User u = new User(name, password);
 				signUpLbl.setStyle("-fx-text-fill: green;");
 				signUpLbl.setText("Created account successfully, "+name);
+				returnLogin();
 			}
 		}
 	}
@@ -103,5 +107,8 @@ public class SignUpController {
 		System.out.println("b is "+b);
 	}
 	
+	public void setPhotosController(PhotosController photosController) {
+		this.photosController = photosController;
+	}
 	
 }
