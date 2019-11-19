@@ -72,6 +72,7 @@ public class AlbumController {
 						}
 						InAlbumController temp = loader.getController();
 						// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+						Album.curr = listView.getSelectionModel().getSelectedItem();
 						Photos.root.setCenter(pane);
 						try {
 							temp.start();

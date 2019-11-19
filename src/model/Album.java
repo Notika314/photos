@@ -8,6 +8,7 @@ public class Album implements Serializable, Comparable<Album> {
 	public String albumName;
 	public User user;
 	public ArrayList<Picture> pictures;
+	public static Album curr;
 	
 	public Album(String albumName, User user) {
 		this.albumName = albumName;
@@ -15,15 +16,16 @@ public class Album implements Serializable, Comparable<Album> {
 		this.pictures = new ArrayList<Picture>();
 	}
 	
-	protected boolean pictureExists(String path) {
+	public boolean pictureExists(File file) {
 		for (int i=0;i<pictures.size();i++) {
-			if (pictures.get(i).path.equals(path)) return true;
+			if (this.pictures.get(i).file.equals(file)) return true;
 		}
 		return false;
 	}
 	
 	public boolean addPicture(Picture picture) {
-		if (pictureExists(picture.path)) {
+		System.out.println(picture.file);
+		if (this.pictureExists(picture.file)) {
 			return false;
 		} else {
 			pictures.add(picture);
