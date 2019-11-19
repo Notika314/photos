@@ -17,7 +17,7 @@ public class InAlbumController {
 	@FXML
 	TilePane tiles;
 	
-	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
+	public void start() throws FileNotFoundException,IOException {  
 		ImageView imageView;
 		while (true) {
             imageView = createThumbnails();
