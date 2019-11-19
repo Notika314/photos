@@ -3,6 +3,7 @@ package app;
 import java.io.File; 
 import java.io.IOException;
 import controller.LoginController;
+import controller.NavbarController;
 import controller.PhotosController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -23,7 +24,8 @@ public class Photos extends Application {
     private double yOffset = 0;
     
     public static BorderPane root;
-	
+    
+
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{

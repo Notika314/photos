@@ -14,24 +14,13 @@
 		<Pane prefHeight="35.0" prefWidth="1440.0"
 			style="-fx-background-color: DARKGREY">
 			<children>
-				<Button fx:id="close" onAction="#closeButton" alignment="CENTER" layoutX="1405.0" maxHeight="35.0"
-					maxWidth="35.0" mnemonicParsing="false" prefHeight="35.0"
-					prefWidth="35.0"
+				<Button fx:id="close" alignment="CENTER" layoutX="1405.0"
+					maxHeight="35.0" maxWidth="35.0" mnemonicParsing="false"
+					onAction="#closeButton" prefHeight="35.0" prefWidth="35.0"
 					style="-fx-background-radius: 0; -fx-padding: 0 0 0 0;" text="X"
 					textAlignment="CENTER">
 					<font>
 						<Font size="18.0" />
-					</font>
-				</Button>
-				<Button alignment="CENTER" maxHeight="35.0"
-					mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0"
-					style="-fx-background-radius: 0; -fx-padding: 0 0 0 0; -fx-effect: null;"
-					text="Home">
-					<effect>
-						<DropShadow />
-					</effect>
-					<font>
-						<Font size="14.0" />
 					</font>
 				</Button>
 				<Button alignment="TOP_CENTER" contentDisplay="TOP"
@@ -41,6 +30,30 @@
 					textAlignment="CENTER">
 					<font>
 						<Font size="22.0" />
+					</font>
+				</Button>
+				<Button fx:id="homeBtn" alignment="CENTER" disable="true"
+					maxHeight="35.0" mnemonicParsing="false" onAction="#home"
+					prefHeight="35.0" prefWidth="100.0"
+					style="-fx-background-radius: 0; -fx-padding: 0 0 0 0; -fx-effect: null;"
+					text="Home" visible="false">
+					<effect>
+						<DropShadow />
+					</effect>
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Button>
+				<Button fx:id="logOutBtn" alignment="CENTER" disable="true"
+					layoutX="100.0" maxHeight="35.0" mnemonicParsing="false"
+					onAction="#logOut" prefHeight="35.0" prefWidth="100.0"
+					style="-fx-background-radius: 0; -fx-padding: 0 0 0 0; -fx-effect: null;"
+					text="Log Out" visible="false">
+					<effect>
+						<DropShadow />
+					</effect>
+					<font>
+						<Font size="14.0" />
 					</font>
 				</Button>
 			</children>
