@@ -11,12 +11,15 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
@@ -28,6 +31,8 @@ public class AlbumController {
 	
 	@FXML
 	TextField createField;
+	@FXML
+	TextField renameField;
 	
 	private ObservableList<Album> obsList;  
 
@@ -43,12 +48,9 @@ public class AlbumController {
 
 		//may need to put this else where
 		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
 			@Override
 			public void handle(MouseEvent mouseEvent) {
-
 				if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-
 					if (mouseEvent.getClickCount() == 2) {
 						FXMLLoader loader = new FXMLLoader();
 						loader.setLocation(getClass().getResource("/view/navbar.fxml"));
@@ -80,35 +82,95 @@ public class AlbumController {
 				}
 			}
 		});
-
+		if (obsList.size() != 0) {
+			listView.getSelectionModel().select(0);
+			listView.getFocusModel().focus(0);
+			details();
+			renameField.setText(listView.getSelectionModel().getSelectedItem().albumName);
+		}
 		listView.getSelectionModel().selectedIndexProperty().
     	addListener(obs -> details()); 
+		listView.getSelectionModel().selectedIndexProperty().
+    	addListener(obs -> 
+    	{	if (listView.getSelectionModel().getSelectedItem() != null) 
+    			{renameField.setText(listView.getSelectionModel().getSelectedItem().albumName);}}); 
     }
 	
 	public void details() {
-		
+		//We have to set the various album traits here.
 	}
 	
 	public void create() {
 		if (createField.getText() == null || createField.getText() == "") {
 			System.out.println("Flag Some Error");
+			return;
 		}
 		if (User.curr.albumExists(createField.getText())) {
 			System.out.println("Flag Duplicate");
+			return;
 		}
 		Album temp = new Album(createField.getText(), User.curr);
 		int i = Collections.binarySearch(obsList, temp);
 		i = ~i;
 		obsList.add(i, temp);
 		listView.getSelectionModel().select(i);
-
+		clearFields((AnchorPane)createField.getParent());
 	}
 	
 	public void rename() {
-		
+		if (renameField.getText() == null || renameField.getText() == "") {
+			System.out.println("Flag Some Error");
+			return;
+		}
+		if (User.curr.albumExists(renameField.getText())) {
+			System.out.println("Flag Duplicate");
+			return;
+		}
+		Album temp = new Album(renameField.getText(), User.curr);
+		Album del = listView.getSelectionModel().getSelectedItem();
+		listView.getSelectionModel().clearSelection();
+		User.curr.deleteAlbum(del);
+
+		int i = Collections.binarySearch(obsList, temp);
+		i = ~i;
+		if (i == 0) {
+			listView.getSelectionModel().select(i);
+			obsList.add(i, temp);
+			listView.getSelectionModel().select(i);
+		}
+		else {
+			obsList.add(i, temp);
+			listView.getSelectionModel().select(i);
+		}
 	}
 	
 	public void delete() {
-		
+		if (obsList.size() == 0) {
+			System.out.println("The list is empty");
+			return;
+		}
+		else {
+			int i = listView.getSelectionModel().getSelectedIndex();
+			obsList.remove(i);
+			if (obsList.size() != 0) {
+				listView.getSelectionModel().select(i);
+			}
+			else {
+				listView.getSelectionModel().clearSelection();
+				//clearFields((AnchorPane)detailsName.getParent());
+				clearFields((AnchorPane)renameField.getParent());
+			}
+		}
+	}
+	
+	private void clearFields(AnchorPane pane) {
+		for (Node node : pane.getChildren()) {
+			if (node instanceof TextField) {
+				((TextField)node).setText(null);
+			}
+			if (node instanceof Text) {
+				((Text)node).setText(null);
+			}
+		}
 	}
 }
