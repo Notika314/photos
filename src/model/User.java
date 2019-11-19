@@ -74,10 +74,10 @@ public class User implements Serializable {
 	}
 	
 	
-	public void addPhotoToAlbum(Album album, String path,String caption) {
+	public void addPhotoToAlbum(Album album, File file) throws IOException {
 		for (int i=0;i<userAlbums.size();i++) {
 			if (userAlbums.get(i).equals(album)) {
-				Picture picture = new Picture(album,path,caption);
+				Picture picture = new Picture(album,file);
 				userAlbums.get(i).addPicture(picture);
 			}
 		}
@@ -91,9 +91,9 @@ public class User implements Serializable {
 		}
 	}
 	
-	public void copyPicture(Picture picture,Album newAlbum) {
+	public void copyPicture(Picture picture,Album newAlbum) throws IOException {
 		if (albumExists(newAlbum.albumName)) {
-			Picture newPicture = new Picture(newAlbum,picture.path, picture.caption);
+			Picture newPicture = new Picture(newAlbum,picture.file);
 			newPicture.tags = picture.tags;
 			newAlbum.addPicture(newPicture);
 		}

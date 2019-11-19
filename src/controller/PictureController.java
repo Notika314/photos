@@ -19,6 +19,8 @@ public class PictureController {
 	@FXML ImageView image;
 	
 	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
+
+
 		
 	}
 }

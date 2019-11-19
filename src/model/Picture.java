@@ -2,20 +2,32 @@ package model;
 import java.io.*;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 public class Picture implements Serializable{
-	public String path;
+	public File file; 
 	public String caption;
 	private boolean locationTagIsSet=false;
 	public Album album;
 	public User user;
 	public ArrayList<Tag> tags;
-	public Picture(Album album, String path, String caption) {
-		this.path = path;
+	public static Picture curr;
+	
+	/**
+	 * 
+	 * @param album
+	 * @param file
+	 * @param caption
+	 * @throws IOException 
+	 */
+	public Picture(Album album, File file) throws IOException {
+		this.file = file;
 		this.album = album;
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
+		/*
 		if (caption.length()<=2000) this.caption = caption;
-		else this.caption = caption.substring(0,2000);
+		else this.caption = caption.substring(0,2000);*/
 	}
 	private boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
@@ -53,7 +65,7 @@ public class Picture implements Serializable{
 	public boolean equals(Object o) {
 		if (!( o instanceof Picture)) return false;
 		Picture p = (Picture) o;
-		if (p.path.equals(this.path)) return true;
+		if (p.file.equals(this.file)) return true;
 		else return false;
 	}
 }
