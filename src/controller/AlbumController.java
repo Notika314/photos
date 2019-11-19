@@ -5,15 +5,18 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+import app.Photos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
@@ -41,18 +44,43 @@ public class AlbumController {
 		//may need to put this else where
 		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            @Override
-            public void handle(MouseEvent mouseEvent) {
+			@Override
+			public void handle(MouseEvent mouseEvent) {
 
-                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+				if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
 
-                    if(mouseEvent.getClickCount() == 2){
-                        
-                    	//need some stuff to do when two are clicked
-                    }
-                }
-            }});
-		
+					if (mouseEvent.getClickCount() == 2) {
+						FXMLLoader loader = new FXMLLoader();
+						loader.setLocation(getClass().getResource("/view/navbar.fxml"));
+						try {
+							Photos.root.setTop(loader.load());
+						} catch (IOException e1) {
+						}
+						NavbarController cont = loader.getController();
+						cont.visHome();
+						cont.visLog();
+						cont.disHome();
+						cont.disLog();
+						loader = new FXMLLoader();
+						loader.setLocation(getClass().getResource("/view/inAlbum.fxml"));
+						Pane pane = null;
+						try {
+							pane = loader.load();
+						} catch (IOException e) {
+						}
+						InAlbumController temp = loader.getController();
+						// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+						Photos.root.setCenter(pane);
+						try {
+							temp.start();
+						} catch (FileNotFoundException e) {
+						} catch (IOException e) {
+						}
+					}
+				}
+			}
+		});
+
 		listView.getSelectionModel().selectedIndexProperty().
     	addListener(obs -> details()); 
     }

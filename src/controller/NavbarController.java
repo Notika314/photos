@@ -78,8 +78,15 @@ public class NavbarController {
 		Photos.root.setCenter(pane);
 	}
 	
-	public void home() {
-		
+	public void home() throws IOException {
+		homeBtn.setDisable(true);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/view/album.fxml"));
+		Pane pane = loader.load();
+		AlbumController temp = loader.getController();
+		//Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+		Photos.root.setCenter(pane);
+		temp.start();
 	}
 	
 	public void setPhotosController(PhotosController photosController) {
