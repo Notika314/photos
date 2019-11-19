@@ -91,8 +91,14 @@ public class LoginController {
 			cont.visHome();
 			cont.visLog();
 			cont.disLog();
-			Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+			loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/album.fxml"));
+			Pane pane = loader.load();
+			AlbumController temp = loader.getController();
+			//Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 			Photos.root.setCenter(pane);
+			temp.start();
+			
 			/*
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();

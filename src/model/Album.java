@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-public class Album implements Serializable {
+public class Album implements Serializable, Comparable<Album> {
 
 	public String albumName;
 	public User user;
@@ -52,5 +52,13 @@ public class Album implements Serializable {
 		Album a = (Album) o;
 		if (a.albumName.equals(this.albumName)) return true;
 		else return false;
+	}
+	
+	public int compareTo(Album other) {
+		return this.albumName.compareTo(other.albumName);
+	}
+	
+	public String toString() {
+		return this.albumName;
 	}
 }
