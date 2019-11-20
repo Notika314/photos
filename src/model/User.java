@@ -51,6 +51,14 @@ public class User implements Serializable , Comparable<User>{
 		}
 		return null;
 	}
+	public static void removeUser(String name) {
+		for (int i=0;i<User.users.size();i++) {
+			if (User.users.get(i).userName.contentEquals(name)) {
+				User.users.remove(i);
+				return;
+			}
+		}
+	}
 	
 	public static boolean usernameExists(String name) {
 		if (users.size()<1) return false;
@@ -122,6 +130,7 @@ public class User implements Serializable , Comparable<User>{
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;
 		User u = (User) o;
+		System.out.println("Username is "+u.userName);
 		if (u.userName.toLowerCase().equals(this.userName.toLowerCase())) return true;
 		else return false;
 	}

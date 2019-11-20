@@ -3,7 +3,8 @@ package controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
-import java.nio.file.*;
+//import java.nio.file.*;
+import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import model.User;
 public class AdminController {
 	@FXML ListView<User> allUsers;
 	@FXML Button CreateAccount;
+	@FXML Label DeleteUserLbl;
 	@FXML Label NewUserLbl;
 	@FXML TextField newUsrName;
 	@FXML PasswordField newUsrPw;
@@ -69,6 +71,7 @@ public class AdminController {
 				allUsers.getSelectionModel().select(i);
 				NewUserLbl.setStyle("-fx-text-fill: green;");
 				NewUserLbl.setText("Created account successfully, "+name);
+				clearFields((AnchorPane)newUsrName.getParent());
 			}
 		}
 	}
@@ -82,9 +85,19 @@ public class AdminController {
 		else {
 			int i = allUsers.getSelectionModel().getSelectedIndex();
 			String name = obsList.get(i).userName;
+			String password = obsList.get(i).password;
+			User.removeUser(name);
 			obsList.remove(i);
-//			User.users.remove(i);
-			Files.deleteIfExists(Paths.get("data/users/"+name+".ser")); 
+//			Files.deleteIfExists(Paths.get("data/users/"+name+".ser")); 
+			File file = new File("data/users/"+name+".ser");
+    		if(file.delete()){
+    			DeleteUserLbl.setStyle("-fx-text-fill: green;");
+				DeleteUserLbl.setText("Account was deleted successfully");
+    		}else{
+    			DeleteUserLbl.setStyle("-fx-text-fill: red;");
+				DeleteUserLbl.setText("Could not delete the user");
+    		}
+    	   
 			if (obsList.size() != 0) {
 				allUsers.getSelectionModel().select(i);
 			}
@@ -94,4 +107,15 @@ public class AdminController {
 		}
 	}
 	
+
+	private void clearFields(AnchorPane pane) {
+		for (Node node : pane.getChildren()) {
+			if (node instanceof TextField) {
+				((TextField)node).setText(null);
+			}
+			if (node instanceof Text) {
+				((Text)node).setText(null);
+			}
+		}
+	}
 }
