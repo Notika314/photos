@@ -62,7 +62,10 @@ public class AdminController {
 			if (User.usernameExists(name)) {
 				NewUserLbl.setStyle("-fx-text-fill: red;");
 				NewUserLbl.setText("Choose different username");
-			} else {
+			} else if (name.contentEquals("")|| password.contentEquals("")) {
+				NewUserLbl.setStyle("-fx-text-fill: red;");
+				NewUserLbl.setText("Username or password can't be empty");
+			}	else {
 				User u = new User(name, password);
 //				User.users.add(u);
 				int i = Collections.binarySearch(obsList, u);

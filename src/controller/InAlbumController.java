@@ -198,6 +198,7 @@ public class InAlbumController {
 	}
 	
 	public void caption() {
+		System.out.println("Caption is updated to "+captionField.getText());
 		selectedPicture.recaption(captionField.getText());
 	}
 	
