@@ -63,7 +63,7 @@ public class LoginController {
 	public void login() throws IOException {
 		System.out.println("in login");
 		if (loginUsrName.getText().toLowerCase().equals("admin")) {
-			if (logInPw.getText().equals("password")) {
+			if (logInPw.getText().equals("admin")) {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/navbar.fxml"));
 				Photos.root.setTop(loader.load());
