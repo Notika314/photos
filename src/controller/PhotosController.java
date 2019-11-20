@@ -38,7 +38,7 @@ public class PhotosController {
 	}
 	
 	public void getAllUsers() throws FileNotFoundException, IOException,  ClassNotFoundException {
-		File dir = new File("data/users");
+		File dir = new File("data/");
 		File[] files = dir.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				return name.toLowerCase().endsWith("ser");

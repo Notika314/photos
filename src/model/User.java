@@ -120,7 +120,7 @@ public class User implements Serializable {
 		else return false;
 	}
 	public static void writeUser (User u) throws IOException {
-		String storeFile = "data/users/"+u.userName+".ser"; 
+		String storeFile = "data/"+u.userName+".ser"; 
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storeFile));
 		System.out.println("writing new user to "+ storeFile);
 		oos.writeObject(u); 

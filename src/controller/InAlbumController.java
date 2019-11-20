@@ -65,10 +65,12 @@ public class InAlbumController {
 	    	System.out.println("File already in album");
 	    	return;
 	    }
+	    createImage(temp);
+	    /*
 	    ImageView imageView = new ImageView();
 	    imageView.setImage(new Image(new FileInputStream(temp.file),150, 0, true, true));
         imageView.setFitWidth(150);
-        tiles.getChildren().addAll(imageView);
+        tiles.getChildren().addAll(imageView);*/
 	}
 	
 	public ImageView createImage(Picture picture) throws FileNotFoundException {
@@ -108,8 +110,12 @@ public class InAlbumController {
 							}
 							PictureController temp = loader.getController();
 							// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
+							Picture.curr = picture;
 							Photos.root.setCenter(pane);
-							temp.start();
+							try {
+								temp.start();
+							} catch (IOException e) {
+							}
 	                    }
 	                }
 	            }});
