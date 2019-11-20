@@ -85,7 +85,6 @@ public class AdminController {
 		else {
 			int i = allUsers.getSelectionModel().getSelectedIndex();
 			String name = obsList.get(i).userName;
-			String password = obsList.get(i).password;
 			User.removeUser(name);
 			obsList.remove(i);
 //			Files.deleteIfExists(Paths.get("data/users/"+name+".ser")); 

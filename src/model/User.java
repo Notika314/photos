@@ -36,6 +36,7 @@ public class User implements Serializable , Comparable<User>{
 			this.userAlbums = new ArrayList<Album>();
 			this.tagTypes.add("location");
 			this.tagTypes.add("person");
+			this.tagTypes.add("hashtag");
 //			this.userPictures = new ArrayList<Picture>();
 			int i = Collections.binarySearch(users, this);
 			i = ~i;

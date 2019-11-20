@@ -198,8 +198,6 @@ public class InAlbumController {
 	}
 	
 	public void caption() {
-		System.out.println("Selected picture is "+selectedPicture);
-//		selectedPicture.caption = captionField.getText();
 		selectedPicture.recaption(captionField.getText());
 	}
 	
