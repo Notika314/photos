@@ -198,8 +198,8 @@ public class InAlbumController {
 	}
 	
 	public void caption() {
-		System.out.println("Caption is updated to "+captionField.getText());
-		selectedPicture.recaption(captionField.getText());
+		selectedPicture.caption = captionField.getText();
+//		selectedPicture.recaption(captionField.getText());
 	}
 	
 	public void updateCaption() {
@@ -214,6 +214,7 @@ public class InAlbumController {
 		else {
 			i = ~i;
 			obsTypes.add(i, typeField.getText());
+			typeList.getSelectionModel().select(i);
 		}
 	}
 	

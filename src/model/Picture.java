@@ -27,6 +27,7 @@ public class Picture implements Serializable{
 		this.album = album;
 		this.date= new Date(file.lastModified());
 		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1; // Jan = 0, dec = 11
 		int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH); 
@@ -34,6 +35,8 @@ public class Picture implements Serializable{
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
 		this.caption = "";
+		System.out.println("Date is "+this.date);
+		System.out.println("Created at is: "+this.createdAt);
 	}
 	protected boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
@@ -45,7 +48,6 @@ public class Picture implements Serializable{
 	
 	public void recaption(String newCaption) {
 		this.caption = newCaption;
-		System.out.println("setting caption of the picture to "+this.caption);
 	}
 	
 	public void addTag(String type,String value) {

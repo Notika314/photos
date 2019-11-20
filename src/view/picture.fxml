@@ -25,7 +25,7 @@
 						<ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
 					</center>
                <bottom>
-                  <Label fx:id="CaptionLbl" prefHeight="69.0" prefWidth="559.0" BorderPane.alignment="CENTER">
+                  <Label fx:id="CaptionLbl" prefHeight="125.0" prefWidth="559.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="30.0" />
                      </BorderPane.margin>
@@ -48,7 +48,7 @@
 														<AnchorPane prefHeight="394.0" prefWidth="576.0" />
 														<AnchorPane prefHeight="394.0" prefWidth="576.0">
 															<children>
-																<TextField fx:id="captionField" alignment="CENTER" layoutX="128.0" layoutY="87.0" prefHeight="104.0" prefWidth="320.0" promptText="Caption">
+																<TextField fx:id="captionField" alignment="CENTER" layoutX="32.0" layoutY="13.0" prefHeight="178.0" prefWidth="525.0" promptText="Caption">
 																	<font>
 																		<Font size="20.0" />
 																	</font>
@@ -73,9 +73,9 @@
 									<content>
 										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="576.0">
 											<children>
-												<VBox prefHeight="788.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+												<VBox layoutY="36.0" prefHeight="753.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
 													<children>
-														<ListView fx:id="tagList" prefHeight="308.0" prefWidth="576.0" />
+														<ListView fx:id="tagList" prefHeight="247.0" prefWidth="576.0" />
 														<AnchorPane prefHeight="210.0" prefWidth="576.0">
 															<children>
 																<HBox layoutX="60.0" layoutY="14.0" maxWidth="576.0" prefHeight="210.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -145,6 +145,11 @@
 														</TabPane>
 													</children>
 												</VBox>
+                                    <Label layoutX="216.0" layoutY="2.0" prefHeight="17.0" prefWidth="145.0" text="ALL THE TAGS">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
 											</children>
 										</AnchorPane>
 									</content>

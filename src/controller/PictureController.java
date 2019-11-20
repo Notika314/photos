@@ -88,6 +88,7 @@ public class PictureController {
 		else {
 			i = ~i;
 			obsTypes.add(i, typeField.getText());
+			typeList.getSelectionModel().select(i);
 		}
 	}
 	
