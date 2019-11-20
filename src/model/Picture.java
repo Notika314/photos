@@ -1,17 +1,19 @@
 package model;
 import java.io.*;
 import java.util.ArrayList;
-
-import javafx.scene.image.Image;
-
+import java.util.Date;
+import java.util.Calendar;
 public class Picture implements Serializable{
 	public File file; 
 	public String caption;
+	Date createdAt;
+	String date;
 	private boolean locationTagIsSet=false;
 	public Album album;
 	public User user;
 	public ArrayList<Tag> tags;
 	public static Picture curr;
+	static final long serialVersionUID = 1L;
 	
 	/**
 	 * 
@@ -23,11 +25,14 @@ public class Picture implements Serializable{
 	public Picture(Album album, File file) throws IOException {
 		this.file = file;
 		this.album = album;
+		this.createdAt= new Date(file.lastModified());
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1; // Jan = 0, dec = 11
+		int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH); 
+		this.date = month+"/"+dayOfMonth+"/"+year;
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
-		/*
-		if (caption.length()<=2000) this.caption = caption;
-		else this.caption = caption.substring(0,2000);*/
 	}
 	private boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
