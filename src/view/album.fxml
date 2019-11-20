@@ -110,7 +110,117 @@
 									text="Search">
 									<content>
 										<AnchorPane minHeight="0.0" minWidth="0.0"
-											prefHeight="180.0" prefWidth="200.0" />
+											prefHeight="515.0" prefWidth="960.0">
+											<children>
+												<TabPane prefHeight="472.0" prefWidth="960.0"
+													tabClosingPolicy="UNAVAILABLE">
+													<tabs>
+														<Tab
+															style="-fx-background-radius: 0; -fx-pref-width: 468;"
+															text="Time">
+															<content>
+																<AnchorPane minHeight="0.0" minWidth="0.0"
+																	prefHeight="180.0" prefWidth="200.0">
+																	<children>
+																		<TextField fx:id="startField"
+																			alignment="CENTER" layoutX="96.0" layoutY="113.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="Start Date">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<TextField fx:id="endField"
+																			alignment="CENTER" layoutX="555.0" layoutY="113.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="End Date">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<Button fx:id="searchTimeBtn"
+																			depthTest="ENABLE" layoutX="420.0" layoutY="239.0"
+																			mnemonicParsing="false" onAction="#searchTime"
+																			prefHeight="40.0" prefWidth="120.0"
+																			style="-fx-background-radius: 0;" text="Search">
+																			<font>
+																				<Font size="19.0" />
+																			</font>
+																			<effect>
+																				<DropShadow />
+																			</effect>
+																		</Button>
+																	</children>
+																</AnchorPane>
+															</content>
+														</Tab>
+														<Tab
+															style="-fx-background-radius: 0; -fx-pref-width: 468;"
+															text="Tags">
+															<content>
+																<AnchorPane minHeight="0.0" minWidth="0.0"
+																	prefHeight="200.0" prefWidth="200.0">
+																	<children>
+																		<TextField fx:id="createField1"
+																			alignment="CENTER" layoutX="46.0" layoutY="72.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="Type 1 (Required)">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<TextField fx:id="createField11"
+																			alignment="CENTER" layoutX="46.0" layoutY="160.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="Value 1 (Required)">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<TextField fx:id="createField12"
+																			alignment="CENTER" layoutX="589.0" layoutY="72.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="Type 2 (Optional)">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<TextField fx:id="createField111"
+																			alignment="CENTER" layoutX="589.0" layoutY="160.0"
+																			prefHeight="42.0" prefWidth="320.0"
+																			promptText="Value 2 (Optional)">
+																			<font>
+																				<Font size="20.0" />
+																			</font>
+																		</TextField>
+																		<Button fx:id="andBtn" layoutX="445.0"
+																			layoutY="79.0" mnemonicParsing="false"
+																			prefHeight="35.0" prefWidth="70.0"
+																			style="-fx-background-radius: 0;" text="AND" />
+																		<Button fx:id="orBtn" layoutX="445.0"
+																			layoutY="146.0" mnemonicParsing="false"
+																			prefHeight="35.0" prefWidth="70.0"
+																			style="-fx-background-radius: 0;" text="OR" />
+																		<Button fx:id="searchTagBtn" depthTest="ENABLE"
+																			layoutX="420.0" layoutY="282.0"
+																			mnemonicParsing="false" onAction="#searchTag"
+																			prefHeight="40.0" prefWidth="120.0"
+																			style="-fx-background-radius: 0;" text="Search">
+																			<font>
+																				<Font size="19.0" />
+																			</font>
+																			<effect>
+																				<DropShadow />
+																			</effect>
+																		</Button>
+																	</children>
+																</AnchorPane>
+															</content>
+														</Tab>
+													</tabs>
+												</TabPane>
+											</children>
+										</AnchorPane>
 									</content>
 								</Tab>
 							</tabs>

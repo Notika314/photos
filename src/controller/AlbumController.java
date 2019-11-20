@@ -164,6 +164,14 @@ public class AlbumController {
 		}
 	}
 	
+	public void searchTime() {
+		
+	}
+	
+	public void searchTag() {
+		
+	}
+	
 	private void clearFields(AnchorPane pane) {
 		for (Node node : pane.getChildren()) {
 			if (node instanceof TextField) {
