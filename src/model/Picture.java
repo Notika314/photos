@@ -34,7 +34,7 @@ public class Picture implements Serializable{
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
 	}
-	private boolean tagExists(String type,String value) {
+	protected boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
 			if (tags.get(i).type.equals(type) && tags.get(i).value.contentEquals(value)) return true;
 		}
