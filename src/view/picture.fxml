@@ -1,38 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1440.0" stylesheets="@inAlbumTab.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PictureController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" stylesheets="@inAlbumTab.css"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.PictureController">
 	<children>
 		<HBox prefHeight="830.0" prefWidth="1440.0">
 			<children>
-            <BorderPane prefHeight="830.0" prefWidth="864.0">
-               <center>
-      				<ImageView fx:id="image" fitHeight="810.0" fitWidth="844.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
+				<BorderPane prefHeight="830.0" prefWidth="864.0">
+					<center>
+						<ImageView fx:id="image" fitHeight="810.0"
+							fitWidth="844.0" pickOnBounds="true" preserveRatio="true"
+							BorderPane.alignment="CENTER" />
+					</center>
+				</BorderPane>
 				<VBox prefHeight="830.0" prefWidth="576.0">
 					<children>
-						<AnchorPane prefHeight="240.0" prefWidth="200.0" />
-						<ListView prefHeight="310.0" prefWidth="576.0" />
-						<TabPane prefHeight="280.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+						<TabPane fx:id="tabs" prefHeight="830.0" prefWidth="576.0"
+							tabClosingPolicy="UNAVAILABLE">
 							<tabs>
-								<Tab style="-fx-pref-width: 276;" text="Untitled Tab 1">
+								<Tab closable="false"
+									style="-fx-background-radius: 0; -fx-pref-width: 275;"
+									text="Details/Caption">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="280.0" prefWidth="200.0" />
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="830.0" prefWidth="576.0">
+											<children>
+												<VBox prefHeight="788.0" prefWidth="576.0">
+													<children>
+														<AnchorPane prefHeight="394.0"
+															prefWidth="576.0" />
+														<AnchorPane prefHeight="394.0"
+															prefWidth="576.0">
+															<children>
+																<TextField fx:id="captionField"
+																	alignment="CENTER" layoutX="128.0" layoutY="87.0"
+																	prefHeight="104.0" prefWidth="320.0"
+																	promptText="Caption">
+																	<font>
+																		<Font size="20.0" />
+																	</font>
+																</TextField>
+																<Button fx:id="captionBtn" depthTest="ENABLE"
+																	layoutX="228.0" layoutY="251.0" mnemonicParsing="false"
+																	onAction="#caption" prefHeight="40.0" prefWidth="120.0"
+																	style="-fx-background-radius: 0;" text="Set">
+																	<font>
+																		<Font size="19.0" />
+																	</font>
+																	<effect>
+																		<DropShadow />
+																	</effect>
+																</Button>
+															</children>
+														</AnchorPane>
+													</children>
+												</VBox>
+											</children>
+										</AnchorPane>
 									</content>
 								</Tab>
-								<Tab style="-fx-pref-width: 276;" text="Untitled Tab 2">
+								<Tab closable="false"
+									style="-fx-background-radius: 0; -fx-pref-width: 275;"
+									text="Tags">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="830.0" prefWidth="576.0">
+											<children>
+												<VBox prefHeight="788.0" prefWidth="576.0"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+													<children>
+														<ListView fx:id="tagList" prefHeight="308.0"
+															prefWidth="576.0" />
+														<AnchorPane prefHeight="210.0"
+															prefWidth="576.0">
+															<children>
+																<HBox layoutX="60.0" layoutY="14.0"
+																	maxWidth="576.0" prefHeight="210.0" prefWidth="576.0"
+																	AnchorPane.bottomAnchor="0.0"
+																	AnchorPane.leftAnchor="0.0"
+																	AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+																	<children>
+																		<AnchorPane prefHeight="210.0"
+																			prefWidth="360.0">
+																			<children>
+																				<TextField fx:id="typeField"
+																					alignment="CENTER" layoutX="70.0" layoutY="29.0"
+																					prefHeight="42.0" prefWidth="220.0"
+																					promptText="Tag Type">
+																					<font>
+																						<Font size="20.0" />
+																					</font>
+																				</TextField>
+																				<Button fx:id="addTypeBtn" depthTest="ENABLE"
+																					layoutX="120.0" layoutY="116.0"
+																					mnemonicParsing="false" onAction="#addType"
+																					prefHeight="30.0" prefWidth="120.0"
+																					style="-fx-background-radius: 0;" text="Add Type">
+																					<font>
+																						<Font size="19.0" />
+																					</font>
+																					<effect>
+																						<DropShadow />
+																					</effect>
+																				</Button>
+																			</children>
+																		</AnchorPane>
+																		<ListView fx:id="typeList" prefHeight="210.0"
+																			prefWidth="289.0" />
+																	</children>
+																</HBox>
+															</children>
+														</AnchorPane>
+														<TabPane prefHeight="270.0" prefWidth="576.0"
+															tabClosingPolicy="UNAVAILABLE">
+															<tabs>
+																<Tab
+																	style="-fx-pref-width: 275; -fx-background-radius: 0;"
+																	text="Add">
+																	<content>
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="220.0" prefWidth="200.0">
+																			<children>
+																				<Button fx:id="addTagBtn" depthTest="ENABLE"
+																					layoutX="228.0" layoutY="132.0"
+																					mnemonicParsing="false" onAction="#addTag"
+																					prefHeight="40.0" prefWidth="120.0"
+																					style="-fx-background-radius: 0;" text="Add Tag">
+																					<font>
+																						<Font size="19.0" />
+																					</font>
+																					<effect>
+																						<DropShadow />
+																					</effect>
+																				</Button>
+																				<TextField fx:id="tagField"
+																					alignment="CENTER" layoutX="178.0" layoutY="47.0"
+																					prefHeight="42.0" prefWidth="220.0"
+																					promptText="Tag Value">
+																					<font>
+																						<Font size="20.0" />
+																					</font>
+																				</TextField>
+																			</children>
+																		</AnchorPane>
+																	</content>
+																</Tab>
+																<Tab
+																	style="-fx-pref-width: 275; -fx-background-radius: 0;"
+																	text="Delete">
+																	<content>
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="180.0" prefWidth="200.0">
+																			<children>
+																				<Button fx:id="deleteTagBtn"
+																					depthTest="ENABLE" layoutX="218.0" layoutY="74.0"
+																					mnemonicParsing="false" onAction="#deleteTag"
+																					prefHeight="40.0" prefWidth="140.0"
+																					style="-fx-background-radius: 0;" text="Delete Tag">
+																					<font>
+																						<Font size="19.0" />
+																					</font>
+																					<effect>
+																						<DropShadow />
+																					</effect>
+																				</Button>
+																			</children>
+																		</AnchorPane>
+																	</content>
+																</Tab>
+															</tabs>
+														</TabPane>
+													</children>
+												</VBox>
+											</children>
+										</AnchorPane>
 									</content>
 								</Tab>
 							</tabs>

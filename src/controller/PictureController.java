@@ -29,4 +29,21 @@ public class PictureController {
 	    image.setImage(new Image(new FileInputStream(Picture.curr.file)));
 
 	}
+	
+	
+	public void caption() {
+		
+	}
+	
+	public void addType() {
+		
+	}
+	
+	public void addTag() {
+		
+	}
+	
+	public void deleteTag() {
+		
+	}
 }
