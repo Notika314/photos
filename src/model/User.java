@@ -2,7 +2,7 @@ package model;
 import java.util.*;
 import java.io.*;
 
-public class User implements Serializable {
+public class User implements Serializable , Comparable<User>{
 	public static ArrayList<User> users = new ArrayList<User>();
 	public String userName;
 	public String password;
@@ -120,12 +120,18 @@ public class User implements Serializable {
 		else return false;
 	}
 	public static void writeUser (User u) throws IOException {
-		String storeFile = "data/"+u.userName+".ser"; 
+		String storeFile = "data/users/"+u.userName+".ser"; 
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storeFile));
 		System.out.println("writing new user to "+ storeFile);
 		oos.writeObject(u); 
 		oos.close();
 		
+	}
+	public int compareTo(User other) {
+		return this.userName.compareTo(other.userName);
+	}
+	public String toString() {
+		return this.userName;
 	}
 	
 //	public static User readUser(String fileName) throws IOException, ClassNotFoundException {

@@ -29,7 +29,9 @@ public class InAlbumController {
 	
 	@FXML
 	Button addBtn;
-	
+	 @FXML 
+	 Button deleteBtn;
+	 
 	public void start() throws FileNotFoundException,IOException {  
         ImageView imageView = null;
 		for (Picture pic : Album.curr.pictures) {

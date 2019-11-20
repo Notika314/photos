@@ -65,9 +65,20 @@ public class LoginController {
 		System.out.println("in login");
 		if (loginUsrName.getText().equals("admin")) {
 			if (logInPw.getText().equals("password")) {
-				Pane pane = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("/view/navbar.fxml"));
+				NavbarController cont = loader.getController();
+//				cont.visHome();
+//				cont.visLog();
+//				cont.disLog();
+				loader = new FXMLLoader(); 
+				loader.setLocation(getClass().getResource("/view/admin.fxml"));
+				Pane pane = loader.load();
+//				Pane pane = FXMLLoader.load(getClass().getResource("/view/admin.fxml"));
+				AdminController ac = loader.getController();
 				Photos.root.setCenter(pane);
-				return;
+				ac.start();
+//				return;
 			}
 			else {
 				logInLbl.setStyle("-fx-text-fill: red;");
@@ -117,7 +128,6 @@ public class LoginController {
 		
 	public void signupPress(ActionEvent e) {
 		Button b = (Button)e.getSource();
-		System.out.println("b is "+b);
 	}
 	
 	public void signUp() throws IOException {

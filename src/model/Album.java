@@ -24,13 +24,12 @@ public class Album implements Serializable, Comparable<Album> {
 	}
 	
 	public boolean addPicture(Picture picture) {
-		System.out.println(picture.file);
-		if (this.pictureExists(picture.file)) {
-			return false;
-		} else {
+//		if (this.pictureExists(picture.file)) {
+//			return false;
+//		} else {
 			pictures.add(picture);
 			return true;
-		}
+//		}
 	}
 	
 	public boolean removePicture(Picture picture) {
@@ -40,12 +39,6 @@ public class Album implements Serializable, Comparable<Album> {
 				return true;
 			}
 		}
-//		for (int j=0;j<this.user.userPictures.size();j++) {
-//			if (this.user.userPictures.get(j).equals(picture)) {
-//				this.user.userPictures.remove(j);
-//				return true;
-//			}
-//		}
 		return false;
 	}
 	
