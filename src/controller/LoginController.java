@@ -1,6 +1,5 @@
 package controller;
 import javafx.scene.Parent;
-import controller.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -61,16 +60,17 @@ public class LoginController {
 		sc.close();
 	}
 	
-	public void login(ActionEvent e) throws IOException {
+	public void login() throws IOException {
 		System.out.println("in login");
-		if (loginUsrName.getText().equals("admin")) {
+		if (loginUsrName.getText().toLowerCase().equals("admin")) {
 			if (logInPw.getText().equals("password")) {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/navbar.fxml"));
+				Photos.root.setTop(loader.load());
 				NavbarController cont = loader.getController();
-//				cont.visHome();
-//				cont.visLog();
-//				cont.disLog();
+				cont.visHome();
+				cont.visLog();
+				cont.disLog();
 				loader = new FXMLLoader(); 
 				loader.setLocation(getClass().getResource("/view/admin.fxml"));
 				Pane pane = loader.load();
@@ -78,7 +78,7 @@ public class LoginController {
 				AdminController ac = loader.getController();
 				Photos.root.setCenter(pane);
 				ac.start();
-//				return;
+				return;
 			}
 			else {
 				logInLbl.setStyle("-fx-text-fill: red;");
@@ -106,29 +106,11 @@ public class LoginController {
 			loader.setLocation(getClass().getResource("/view/album.fxml"));
 			Pane pane = loader.load();
 			AlbumController temp = loader.getController();
-			//Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 			Photos.root.setCenter(pane);
 			temp.start();
-			
-			/*
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/main.fxml"));
-			Parent root = loader.load(); 
-			MainController mainController = loader.getController();
-			mainController.start(primaryStage);
-			Scene scene = new Scene(root, 700, 550);
-			primaryStage.initStyle(StageStyle.UNDECORATED);
-	        primaryStage.setScene(scene);
-	        root.requestFocus();
-			primaryStage.show();
-			*/ 
 		}
 	}
-		
-	public void signupPress(ActionEvent e) {
-		Button b = (Button)e.getSource();
-	}
+
 	
 	public void signUp() throws IOException {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/signup.fxml"));

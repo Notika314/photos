@@ -2,6 +2,7 @@ package controller;
 import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.Scanner;
 import model.User;
 import javafx.collections.FXCollections;
@@ -49,7 +50,9 @@ public class PhotosController {
 			User user = (User)ois.readObject();
 			System.out.println("Reading user "+ user.userName +", with password "+user.password +" from a file .");
 			ois.close();
-			User.users.add(user);
+			int j = Collections.binarySearch(User.users, user);
+			j = ~j;
+			User.users.add(j,user);
 		}
 		System.out.println("All current users are: :");
 		for (int i=0;i<User.users.size();i++) {

@@ -34,13 +34,15 @@ public class User implements Serializable , Comparable<User>{
 			this.password = password;
 			this.userAlbums = new ArrayList<Album>();
 //			this.userPictures = new ArrayList<Picture>();
-			users.add(this);
+			int i = Collections.binarySearch(users, this);
+			i = ~i;
+			users.add(i,this);
 		}
 	}
 	public static User findUser(String name, String password) {
 		if (users.size()<1) return null;
 		for (int i=0;i<users.size();i++) {
-			if (users.get(i).userName.equals(name)&&users.get(i).password.equals(password)) {
+			if (users.get(i).userName.toLowerCase().equals(name.toLowerCase())&&users.get(i).password.equals(password)) {
 				return users.get(i);
 			}
 		}
@@ -50,7 +52,7 @@ public class User implements Serializable , Comparable<User>{
 	public static boolean usernameExists(String name) {
 		if (users.size()<1) return false;
 		for (int i=0;i<users.size();i++) {
-			if (users.get(i).userName.contentEquals(name)) {
+			if (users.get(i).userName.toLowerCase().contentEquals(name.toLowerCase())) {
 				return true;
 			}
 		}
@@ -116,7 +118,7 @@ public class User implements Serializable , Comparable<User>{
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;
 		User u = (User) o;
-		if (u.userName.equals(this.userName)) return true;
+		if (u.userName.toLowerCase().equals(this.userName.toLowerCase())) return true;
 		else return false;
 	}
 	public static void writeUser (User u) throws IOException {
@@ -128,7 +130,7 @@ public class User implements Serializable , Comparable<User>{
 		
 	}
 	public int compareTo(User other) {
-		return this.userName.compareTo(other.userName);
+		return this.userName.toLowerCase().compareTo(other.userName.toLowerCase());
 	}
 	public String toString() {
 		return this.userName;

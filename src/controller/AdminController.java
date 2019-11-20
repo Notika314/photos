@@ -32,23 +32,17 @@ public class AdminController {
 	private ObservableList<User> obsList; 
 	public void start() throws FileNotFoundException,IOException { 
 		System.out.println("In admin page");
-		obsList = FXCollections.observableList(User.users); 
+		obsList = FXCollections.observableArrayList(User.users); 
 	
 		allUsers.setItems(obsList); 
 		
 		if (obsList.size() != 0) {
 			allUsers.getSelectionModel().select(0);
 			allUsers.getFocusModel().focus(0);
-			details();
 		}
-		allUsers.getSelectionModel().selectedIndexProperty().
-    	addListener(obs -> details());    
-//		navbarController.setLoginController(this);
 	}
-	public void details() {
-		//We have to set the various album traits here.
-	}
-	public void create(ActionEvent e) throws IOException {
+
+	public void create() throws IOException {
 		System.out.println("Creating new user");
 		if (newUsrName.getText() == null || newUsrName.getText() == "" || 
 				newUsrPw.getText() == null || newUsrPw.getText() == "" ||
@@ -73,7 +67,6 @@ public class AdminController {
 				i = ~i;
 				obsList.add(i, u);
 				allUsers.getSelectionModel().select(i);
-				clearFields((AnchorPane)newUsrName.getParent());
 				NewUserLbl.setStyle("-fx-text-fill: green;");
 				NewUserLbl.setText("Created account successfully, "+name);
 			}
@@ -90,7 +83,6 @@ public class AdminController {
 			int i = allUsers.getSelectionModel().getSelectedIndex();
 			String name = obsList.get(i).userName;
 			obsList.remove(i);
-			System.out.println("removing user "+User.users.get(i).userName);
 //			User.users.remove(i);
 			Files.deleteIfExists(Paths.get("data/users/"+name+".ser")); 
 			if (obsList.size() != 0) {
@@ -102,14 +94,4 @@ public class AdminController {
 		}
 	}
 	
-	private void clearFields(AnchorPane pane) {
-		for (Node node : pane.getChildren()) {
-			if (node instanceof TextField) {
-				((TextField)node).setText(null);
-			}
-			if (node instanceof Text) {
-				((Text)node).setText(null);
-			}
-		}
-	}
 }

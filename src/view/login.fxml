@@ -9,27 +9,41 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<Pane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.LoginController">
 
 	<children>
-		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="1440.0">
+		<AnchorPane minHeight="0.0" minWidth="0.0"
+			prefHeight="830.0" prefWidth="1440.0">
 			<children>
-				<Label fx:id="logInLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="515.0" layoutY="150.0" prefHeight="32.0" prefWidth="410.0" text="Login" textAlignment="CENTER">
+				<Label fx:id="logInLbl" alignment="CENTER"
+					contentDisplay="CENTER" layoutX="515.0" layoutY="150.0"
+					prefHeight="32.0" prefWidth="410.0" text="Login"
+					textAlignment="CENTER">
 					<font>
 						<Font size="21.0" />
 					</font>
 				</Label>
-				<TextField fx:id="loginUsrName" layoutX="570.0" layoutY="310.0" prefHeight="42.0" prefWidth="320.0" promptText="Username">
+				<TextField fx:id="loginUsrName" layoutX="570.0"
+					layoutY="310.0" prefHeight="42.0" prefWidth="320.0"
+					promptText="Username">
 					<font>
 						<Font size="20.0" />
 					</font>
 				</TextField>
-				<PasswordField fx:id="logInPw" layoutX="570.0" layoutY="420.0" prefHeight="42.0" prefWidth="320.0" promptText="Password">
+				<PasswordField fx:id="logInPw" layoutX="570.0"
+					layoutY="420.0" prefHeight="42.0" prefWidth="320.0"
+					promptText="Password">
 					<font>
 						<Font size="20.0" />
 					</font>
 				</PasswordField>
-				<Button fx:id="logInBtn" depthTest="ENABLE" layoutX="940.0" layoutY="560.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="96.0" text="Login">
+				<Button fx:id="logInBtn" depthTest="ENABLE" layoutX="940.0"
+					layoutY="560.0" mnemonicParsing="false" onAction="#login"
+					prefHeight="40.0" prefWidth="96.0" text="Login">
 					<font>
 						<Font size="19.0" />
 					</font>
@@ -37,7 +51,9 @@
 						<DropShadow />
 					</effect>
 				</Button>
-				<Button fx:id="signUpBtn" depthTest="ENABLE" layoutX="427.0" layoutY="560.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="96.0" text="SignUp">
+				<Button fx:id="signUpBtn" depthTest="ENABLE" layoutX="427.0"
+					layoutY="560.0" mnemonicParsing="false" onAction="#signUp"
+					prefHeight="40.0" prefWidth="96.0" text="SignUp">
 					<font>
 						<Font size="19.0" />
 					</font>

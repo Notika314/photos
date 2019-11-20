@@ -50,7 +50,7 @@ public class Album implements Serializable, Comparable<Album> {
 	}
 	
 	public int compareTo(Album other) {
-		return this.albumName.compareTo(other.albumName);
+		return this.albumName.toLowerCase().compareTo(other.albumName.toLowerCase());
 	}
 	
 	public String toString() {
