@@ -7,6 +7,7 @@ public class User implements Serializable , Comparable<User>{
 	public String userName;
 	public String password;
 	public ArrayList<Album> userAlbums;
+	public ArrayList<String> tagTypes = new ArrayList<String>();
 	public static User curr;
 	public static final String storeDir = "data";
 	static final long serialVersionUID = 1L;
@@ -33,6 +34,8 @@ public class User implements Serializable , Comparable<User>{
 			this.userName = name;
 			this.password = password;
 			this.userAlbums = new ArrayList<Album>();
+			this.tagTypes.add("location");
+			this.tagTypes.add("person");
 //			this.userPictures = new ArrayList<Picture>();
 			int i = Collections.binarySearch(users, this);
 			i = ~i;
@@ -110,10 +113,11 @@ public class User implements Serializable , Comparable<User>{
 		}
 	}
 	
+	/*
 	public void defineNewTag(String newTag) {
 		if (Tag.hasaType(newTag)) return;
 		Tag.createNewTagType(newTag);
-	}
+	}*/
 	
 	public boolean equals(Object o) {
 		if (!( o instanceof User)) return false;

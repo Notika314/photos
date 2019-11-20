@@ -8,7 +8,7 @@ public class Picture implements Serializable{
 	public String caption;
 	Date date;
 	String createdAt;
-	private boolean locationTagIsSet=false;
+	public boolean locationTagIsSet=false;
 	public Album album;
 	public User user;
 	public ArrayList<Tag> tags;
@@ -36,7 +36,8 @@ public class Picture implements Serializable{
 	}
 	protected boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
-			if (tags.get(i).type.equals(type) && tags.get(i).value.contentEquals(value)) return true;
+			if (tags.get(i).type.toLowerCase().equals(type.toLowerCase()) 
+					&& tags.get(i).value.toLowerCase().contentEquals(value.toLowerCase())) return true;
 		}
 		return false;
 	}
@@ -52,13 +53,13 @@ public class Picture implements Serializable{
 			}	// handle changing location
 		}
 		if (!tagExists(type,value)) {
-			tags.add(new Tag(type,value));
+			//tags.add(new Tag(type,value));
 			if (type.equals("location")) locationTagIsSet = true;
-		}
+		}/*
 		if (!Tag.hasaType(type)) {
 			System.out.println("no such tag type exists");
 			return;
-		}
+		}*/
 	}
 	
 	public void deleteTag(String tag) {
