@@ -6,8 +6,8 @@ import java.util.Calendar;
 public class Picture implements Serializable{
 	public File file; 
 	public String caption;
-	Date createdAt;
-	String date;
+	Date date;
+	String createdAt;
 	private boolean locationTagIsSet=false;
 	public Album album;
 	public User user;
@@ -25,12 +25,12 @@ public class Picture implements Serializable{
 	public Picture(Album album, File file) throws IOException {
 		this.file = file;
 		this.album = album;
-		this.createdAt= new Date(file.lastModified());
+		this.date= new Date(file.lastModified());
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1; // Jan = 0, dec = 11
 		int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH); 
-		this.date = month+"/"+dayOfMonth+"/"+year;
+		this.createdAt = month+"/"+dayOfMonth+"/"+year;
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
 	}
