@@ -198,7 +198,9 @@ public class InAlbumController {
 	}
 	
 	public void caption() {
-		selectedPicture.caption = captionField.getText();
+		System.out.println("Selected picture is "+selectedPicture);
+//		selectedPicture.caption = captionField.getText();
+		selectedPicture.recaption(captionField.getText());
 	}
 	
 	public void updateCaption() {
@@ -241,7 +243,7 @@ public class InAlbumController {
 		i = ~i;
 		obsTags.add(i, temp);
 		tagList.getSelectionModel().select(i);
-		clearFields((AnchorPane)tagField.getParent());
+			
 		
 	}
 	

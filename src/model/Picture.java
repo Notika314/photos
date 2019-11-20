@@ -33,6 +33,7 @@ public class Picture implements Serializable{
 		this.createdAt = month+"/"+dayOfMonth+"/"+year;
 		this.user = album.user;
 		this.tags = new ArrayList<Tag>();
+		this.caption = "";
 	}
 	protected boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
@@ -43,7 +44,8 @@ public class Picture implements Serializable{
 	}
 	
 	public void recaption(String newCaption) {
-		this.caption = newCaption.substring(0,2000);
+		this.caption = newCaption;
+		System.out.println("setting caption of the picture to "+this.caption);
 	}
 	
 	public void addTag(String type,String value) {
