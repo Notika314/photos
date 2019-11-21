@@ -14,8 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.Album;
 import model.Picture;
+import model.Search;
 
-public class SlideshowController {
+public class SlideSearchController {
 
 	@FXML
 	ImageView image;
@@ -26,7 +27,11 @@ public class SlideshowController {
 	
 	public void start() throws IOException {
 	    image.setImage(new Image(new FileInputStream(Picture.curr.file)));
-	    i = Album.curr.pictureExists(Picture.curr);
+	    for (i = 0; i < Search.searchResult.size(); i++) {
+	    	if (Search.searchResult.get(i).equals(Picture.curr)) {
+	    		break;
+	    	}
+	    }
 	    if (i == 0) {
 	    	backwardBtn.setDisable(true);
 	    }
@@ -55,28 +60,27 @@ public class SlideshowController {
 		cont.disHome();
 		cont.disLog();
 		loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/inAlbum.fxml"));
+		loader.setLocation(getClass().getResource("/view/search.fxml"));
 		Pane pane = null;
 		try {
 			pane = loader.load();
 		} catch (IOException e) {
 		}
-		InAlbumController temp = loader.getController();
+		SearchController temp = loader.getController();
 		Photos.root.setCenter(pane);
 		try {
 			temp.start();
 		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
-		}
+		} 
 	}
 	
 	public void forward() throws IOException {
-		Picture.curr = Album.curr.pictures.get(i+1);
+		Picture.curr = Search.searchResult.get(i+1);
 	    start();
 	}
 	
 	public void backward() throws IOException {
-		Picture.curr = Album.curr.pictures.get(i-1);
+		Picture.curr = Search.searchResult.get(i-1);
 		start();
 	}
 	
