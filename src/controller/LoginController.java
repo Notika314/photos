@@ -4,18 +4,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import app.Photos;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import model.User;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 public class LoginController {
 
@@ -111,6 +122,12 @@ public class LoginController {
 		}
 	}
 
+	private void errorUpdate(String str) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
+		alert.setHeaderText(str);
+		alert.showAndWait();
+	}
 	
 	public void signUp() throws IOException {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/signup.fxml"));

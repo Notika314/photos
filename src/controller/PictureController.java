@@ -17,9 +17,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import model.Album;
 import model.Picture;
 import model.Tag;
@@ -30,7 +34,8 @@ public class PictureController {
 	@FXML Button captionBtn;
 	@FXML Button addTagBtn;
 	@FXML Button addTypeBtn;
-	@FXML TextField captionField;
+	@FXML Button deleteTagBtn;
+	@FXML TextArea captionField;
 	@FXML TextField typeField;
 	@FXML TextField tagField;
 	@FXML ListView<String> typeList;
@@ -41,7 +46,6 @@ public class PictureController {
 	private ObservableList<Tag> obsTags;  
 	private ObservableList<String> obsTypes;  
 	
-	private int currentTab = 0;
 	
 	public void start() throws IOException {  
 		selectedPicture = Picture.curr;
@@ -122,15 +126,32 @@ public class PictureController {
 			System.out.println("The list is empty");
 			return;
 		}
+		if (selectedPicture == null) {
+			System.out.println("Select a photo");
+			return;
+		}
 		else {
 			int i = tagList.getSelectionModel().getSelectedIndex();
+			if (obsTags.get(i).type.equals("location")) {
+				selectedPicture.locationTagIsSet = false;
+			}
 			obsTags.remove(i);
 			if (obsTags.size() != 0) {
 				tagList.getSelectionModel().select(i);
 			}
 			else {
 				tagList.getSelectionModel().clearSelection();
-				//clearFields((AnchorPane)detailsName.getParent());
+			}
+			clearFields((AnchorPane)deleteTagBtn.getParent());
+		}
+	}
+	private void clearFields(AnchorPane pane) {
+		for (Node node : pane.getChildren()) {
+			if (node instanceof TextField) {
+				((TextField)node).setText(null);
+			}
+			if (node instanceof Text) {
+				((Text)node).setText(null);
 			}
 		}
 	}

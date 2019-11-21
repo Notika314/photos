@@ -10,7 +10,7 @@ import java.util.function.Predicate;
  *
  */
 public class Search {
-	static ArrayList<Picture> searchResult;
+	public static ArrayList<Picture> searchResult;
 
 	
 	/**
@@ -20,7 +20,7 @@ public class Search {
 	 * @param endDate - the latest date within the range
 	 * @return ArrayList of all pictures in Album within the Date range
 	 */
-	static ArrayList<Picture> searchByDateRangeInAlbum(Album a, Date startDate,Date endDate) {
+	public static ArrayList<Picture> searchByDateRangeInAlbum(Album a, Date startDate,Date endDate) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<a.pictures.size();i++) {
 			Date picDate = a.pictures.get(i).date;
@@ -34,7 +34,7 @@ public class Search {
 	 * @param endDate - the latest date within the range
 	 * @return ArrayList of all user's pictures within the Date range
 	 */
-	static ArrayList<Picture> searchByDateRangeInAll(Date startDate, Date endDate) {
+	public static ArrayList<Picture> searchByDateRangeInAll(Date startDate, Date endDate) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<User.curr.userAlbums.size();i++) {
 			Album a = User.curr.userAlbums.get(i);
@@ -51,7 +51,7 @@ public class Search {
 	 * @param value - value of the tag searched
 	 * @return ArrayList of all user's pictures that have the tag with given name and value
 	 */
-	static ArrayList<Picture> searchByTagInAll(String name, String value) {
+	public static ArrayList<Picture> searchByTagInAll(String name, String value) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<User.curr.userAlbums.size();i++) {
 			Album a = User.curr.userAlbums.get(i);
@@ -69,7 +69,7 @@ public class Search {
 	 * @param value - value of the tag searched
 	 * @return ArrayList of all pictures in Album a that have the tag with given name and value
 	 */
-	static ArrayList<Picture> searchByTagInAlbum(Album a, String name, String value) {
+	public static ArrayList<Picture> searchByTagInAlbum(Album a, String name, String value) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<a.pictures.size();i++) {
 			Picture p = a.pictures.get(i);
@@ -85,7 +85,7 @@ public class Search {
 	 * @param value2 - second value of the tag searched
 	 * @return ArrayList of all user's pictures that have the both tags with given names and values
 	 */
-	static ArrayList<Picture> searchByTagsConjuctionInAll(String name1, String value1,String name2, String value2) {
+	public static ArrayList<Picture> searchByTagsConjunctionInAll(String name1, String value1,String name2, String value2) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<User.curr.userAlbums.size();i++) {
 			Album a = User.curr.userAlbums.get(i);
@@ -106,7 +106,7 @@ public class Search {
 	 * @return ArrayList of all user's pictures that have the both tags with given names and values
 	 
 	 */
-	static ArrayList<Picture> searchByTagsConjunctionInAlbum(Album a, String name1, String value1,String name2, String value2) {
+	public static ArrayList<Picture> searchByTagsConjunctionInAlbum(Album a, String name1, String value1,String name2, String value2) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<a.pictures.size();i++) {
 			Picture p = a.pictures.get(i);
@@ -123,7 +123,7 @@ public class Search {
 	 * @return ArrayList of all user's pictures that have at least one of the tags with given names and values
 	 
 	 */
-	static ArrayList<Picture> searchByTagsDisjuctionInAll(String name1, String value1,String name2, String value2) {
+	public static ArrayList<Picture> searchByTagsDisjuctionInAll(String name1, String value1,String name2, String value2) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<User.curr.userAlbums.size();i++) {
 			Album a = User.curr.userAlbums.get(i);
@@ -144,7 +144,7 @@ public class Search {
 	 * @return ArrayList of all user's pictures that have at least one of the tags with given names and values
 	 
 	 */
-	static ArrayList<Picture> searchByTagsDisjunctionInAlbum(Album a, String name1, String value1,String name2, String value2) {
+	public static ArrayList<Picture> searchByTagsDisjunctionInAlbum(Album a, String name1, String value1,String name2, String value2) {
 		Search.searchResult = new ArrayList<Picture>();
 		for (int i=0;i<a.pictures.size();i++) {
 			Picture p = a.pictures.get(i);

@@ -64,7 +64,7 @@ public class InAlbumController {
 	@FXML
 	ImageView selectedImage;
 	
-	Picture selectedPicture;
+	Picture selectedPicture = null;
 	
 	private ObservableList<Tag> obsTags;  
 	private ObservableList<String> obsTypes;  
@@ -114,6 +114,16 @@ public class InAlbumController {
 	    if (file == null) {
 	    	return;
 	    }
+	    String f = file.getCanonicalPath();
+	    String ext = "";
+	    int i = f.lastIndexOf('.');
+	    if (i > 0) {
+	    	ext = f.substring(i+1);
+	    }
+	    if (!ext.equals("jpg") || ext.equals("png")) {
+	    	System.out.println("Insert jpg or png file");
+	    	return;
+	    }
 	    System.out.println(file.lastModified());
 	    Picture temp = new Picture(Album.curr, file);
 	    if (!Album.curr.addPicture(temp)) {
@@ -145,6 +155,8 @@ public class InAlbumController {
 					selectedImage = (ImageView)mouseEvent.getSource();
 					selectedPicture = picture;
 					updateCaption();
+					System.out.println(selectedPicture);
+					System.out.println(selectedPicture.tags);
 					obsTags = FXCollections.observableList(selectedPicture.tags);
 					tagList.setItems(obsTags);
 	                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
@@ -187,7 +199,7 @@ public class InAlbumController {
 	public void delete() {
 		if (selectedImage != null) {
             tiles.getChildren().remove(selectedImage);
-			Album.curr.removePicture(selectedPicture);
+			Album.curr.pictures.remove(selectedPicture);
 			selectedImage = null;
 			selectedPicture = null;
 			captionField.setText(null);
@@ -223,7 +235,7 @@ public class InAlbumController {
 			System.out.println("Select a photo");
 			return;
 		}
-		if (tagField.getText() == null || tagField.getText() == "" || tagField.getText().trim().length() == 0) {
+		if (tagField.getText() == null || tagField.getText().equals("") || tagField.getText().trim().length() == 0) {
 			System.out.println("Input valid value");
 			return;
 		}
@@ -252,16 +264,24 @@ public class InAlbumController {
 			System.out.println("The list is empty");
 			return;
 		}
+		if (selectedPicture == null) {
+			System.out.println("Select a photo");
+			return;
+		}
 		else {
 			int i = tagList.getSelectionModel().getSelectedIndex();
+			if (obsTags.get(i).type.equals("location")) {
+				selectedPicture.locationTagIsSet = false;
+			}
 			obsTags.remove(i);
 			if (obsTags.size() != 0) {
 				tagList.getSelectionModel().select(i);
 			}
 			else {
 				tagList.getSelectionModel().clearSelection();
-				//clearFields((AnchorPane)detailsName.getParent());
 			}
+			clearFields((AnchorPane)deleteTagBtn.getParent());
+
 		}
 	}
 	
