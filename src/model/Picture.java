@@ -76,6 +76,11 @@ public class Picture implements Serializable{
 		System.out.println("Date is "+this.date);
 		System.out.println("Created at is: "+this.createdAt);
 	}
+	/**
+	 * Initializes a Copy of a Picture such that they are not coupled.
+	 * @param pic
+	 * @param album
+	 */
 	public Picture(Picture pic, Album album) {
 		this.file = pic.file;
 		this.caption = pic.caption;
