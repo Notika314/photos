@@ -28,32 +28,75 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
+/**
+ * Controller for Login page, where user can login 
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class LoginController {
 
 //	@FXML protected NavbarController navbarController;
-	
+	/**
+	 * triggers logging in
+	 */
 	@FXML Button logInBtn;
+	/**
+	 * triggers signu=ing up
+	 */
 	@FXML Button signUpBtn;
+	/**
+	 * label for showing the status of signing up
+	 */
 	@FXML Label signUpLbl;
+	/**
+	 * label that shows the status of logging in
+	 */
 	@FXML Label logInLbl;
+	/**
+	 * field for entering user's name
+	 */
 	@FXML TextField newUsrName;
+	/**
+	 * field for entering returning user's name
+	 */
 	@FXML TextField loginUsrName;
+	/**
+	 * field for entering new user's password
+	 */
 	@FXML PasswordField newUsrPw;
+	/**
+	 * field for entering password confirmation
+	 */
 	@FXML PasswordField confirmPw;
+	/**
+	 * field 
+	 */
 	@FXML PasswordField logInPw;
-	
+	/**
+	 * photos controller
+	 */
 	protected PhotosController photosController;
 
 	
 	
-	
+	/**
+	 * Starts the controller
+	 * @param mainStage main container
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
 //		navbarController.setLoginController(this);
 		getAllUsersFromFile();	
 	}
 	
 	
-	
+	/**
+	 * gets all users from file
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException
+	 */
 	private void getAllUsersFromFile() throws FileNotFoundException , IOException {
 		if (!new File("users.txt").exists()) {
 			return;
@@ -69,7 +112,10 @@ public class LoginController {
 		}
 		sc.close();
 	}
-	
+	/**
+	 * triggers loggin in
+	 * @throws IOException throws IOException
+	 */
 	public void login() throws IOException {
 		if (loginUsrName.getText().toLowerCase().equals("admin")) {
 			if (logInPw.getText().equals("admin")) {
@@ -90,19 +136,25 @@ public class LoginController {
 				return;
 			}
 			else {
-				logInLbl.setStyle("-fx-text-fill: red;");
-				logInLbl.setText("Incorrect username or password");
+//				logInLbl.setStyle("-fx-text-fill: red;");
+				//
+				
+				errorUpdate("Incorrect username or password");
+//				logInLbl.setText("Incorrect username or password");
 				return;
 			}
 		}
 		User user = User.findUser(loginUsrName.getText(),logInPw.getText());
 		if (user==null) {
-			logInLbl.setStyle("-fx-text-fill: red;");
-			logInLbl.setText("Incorrect username or password");
+//			logInLbl.setStyle("-fx-text-fill: red;");
+			
+			
+			errorUpdate("Incorrect username or password");
+//			logInLbl.setText("Incorrect username or password");
 		} else {
-			logInLbl.setStyle("-fx-text-fill: green;");
-			logInLbl.setText("Successful login");
-			System.out.println("successful login");
+//			logInLbl.setStyle("-fx-text-fill: green;");
+//			logInLbl.setText("Successful login");
+//			System.out.println("successful login");
 			User.curr = user;
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/navbar.fxml"));
@@ -121,13 +173,20 @@ public class LoginController {
 	}
 	
 
+	/**
+	 * helper method, opens error popup with message
+	 * @param str message to user
+	 */
 	private void errorUpdate(String str) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
 		alert.setHeaderText(str);
 		alert.showAndWait();
 	}
-	
+	/**
+	 * triggers signing up 
+	 * @throws IOException throws IOException
+	 */
 	public void signUp() throws IOException {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/signup.fxml"));
 		Photos.root.setCenter(pane);

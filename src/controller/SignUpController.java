@@ -31,13 +31,30 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Stage;
 import java.io.*;
+/**
+ * Controller for Signup page, handles user creating the account
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class SignUpController {
 
 //	@FXML protected NavbarController navbarController;
-	
+	/**
+	 * triggers loggin in
+	 */
 	@FXML Button logInBtn;
+	/**
+	 * triggers creating new account
+	 */
 	@FXML Button signUpBtn;
+	/**
+	 * displays information about success/failure of signing up
+	 */
 	@FXML Label signUpLbl;
+	/**
+	 * displays information about success/failure of loggin in
+	 */
 	@FXML Label logInLbl;
 	@FXML TextField newUsrName;
 	@FXML TextField loginUsrName;

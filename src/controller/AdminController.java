@@ -68,8 +68,8 @@ public class AdminController {
 	private ObservableList<User> obsList; 
 	/**
 	 * Starts the page, displays all users  
-	 * @throws FileNotFoundException
-	 * @throws IOException
+	 * @throws FileNotFoundException exception thrown if file not found
+	 * @throws IOException throws IOException
 	 */
 	public void start() throws FileNotFoundException,IOException { 
 		obsList = FXCollections.observableArrayList(User.users); 
@@ -83,7 +83,7 @@ public class AdminController {
 	}
 	/**
 	 * Creates new user if all the fields are filled correctly
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public void create() throws IOException {
 		if (newUsrName.getText() == null || newUsrName.getText() == "" || 
@@ -123,7 +123,7 @@ public class AdminController {
 	}
 	/**
 	 * deletes selected user
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public void deleteUser() throws IOException {
 		if (obsList.size() == 0) {

@@ -58,7 +58,6 @@ public class Photos extends Application {
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{
-		//build();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/photos.fxml"));
 		root = loader.load();

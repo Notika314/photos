@@ -17,29 +17,79 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-
+/**
+ * Main controller
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class PhotosController {
-
+	/**
+	 * button for loggin in
+	 */
 	@FXML Button logInBtn;
+	/**
+	 * button for signing up
+	 */
 	@FXML Button signUpBtn;
+	/**
+	 * label for status of signing up
+	 */
 	@FXML Label signUpLbl;
+	/**
+	 * label for status is logging in
+	 */
 	@FXML Label logInLbl;
+	/**
+	 * field for user to enter new user's name
+	 */
 	@FXML TextField newUsrName;
+	/**
+	 * field for user to enter returning user's name
+	 */
 	@FXML TextField loginUsrName;
+	/**
+	 * field to enter new user's password
+	 */
 	@FXML PasswordField newUsrPw;
+	/**
+	 * field to enter confirmation password
+	 */
 	@FXML PasswordField confirmPw;
+	/**
+	 * field to enter password when loggin in
+	 */
 	@FXML PasswordField loginPw;	
-	
+	/**
+	 * navbar Controller
+	 */
 	@FXML protected NavbarController navbarController;
+	/**
+	 * loginController
+	 */
 	@FXML protected LoginController loginController;
+	/**
+	 * signup Controller
+	 */
 	@FXML protected SignUpController signupController;
 
-	
+	/**
+	 * starting controller
+	 * @param mainStage mainStage
+	 * @throws FileNotFoundException thrown when file not found
+	 * @throws IOException throws IOException
+	 * @throws ClassNotFoundException throws in case of serialization issues
+	 */
 	public void start(Stage mainStage) throws FileNotFoundException, IOException , ClassNotFoundException{ 
 		getAllUsers();	
 		navbarController.setPhotosController(this);
 	}
-	
+	/**
+	 * reads all users from files
+	 * @throws FileNotFoundException thrown when file not found
+	 * @throws IOException throws IOException
+	 * @throws ClassNotFoundException throws in case of serialization issues
+	 */
 	public void getAllUsers() throws FileNotFoundException, IOException,  ClassNotFoundException {
 		File dir = new File("data/users/");
 		File[] files = dir.listFiles(new FilenameFilter() {

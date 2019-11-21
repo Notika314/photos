@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Class that implements logic of how Albums are created, modified,
  *  deleted , as well as how pictures are added/deleted/updated within the album
  * @author Natalia Bryzhatenko
- * @autor Christopher Taglieri cat197
+ * @author Christopher Taglieri cat197
  *
  */
 public class Album implements Serializable, Comparable<Album> {

@@ -70,7 +70,7 @@ public class User implements Serializable , Comparable<User>{
 	 * Initializes user with given name and password
 	 * @param name  userName of the user to be created
 	 * @param password  password of the user to be created
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public User(String name, String password) throws IOException {
 		if (User.userExists(name)) {
@@ -161,7 +161,7 @@ public class User implements Serializable , Comparable<User>{
 	 * Adding photo to album
 	 * @param album Album where photo needs to be added
 	 * @param file File where photo is stored on machine
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public void addPhotoToAlbum(Album album, File file) throws IOException {
 		for (int i=0;i<userAlbums.size();i++) {
@@ -187,7 +187,7 @@ public class User implements Serializable , Comparable<User>{
 	 * Copying pictures to another album
 	 * @param picture Picture to be copied
 	 * @param newAlbum Album where picture is being copied to 
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 	public void copyPicture(Picture picture,Album newAlbum) throws IOException {
 		if (albumExists(newAlbum.albumName)) {
@@ -226,8 +226,8 @@ public class User implements Serializable , Comparable<User>{
 	}
 	/**
 	 * Writes user to a file
-	 * @param u
-	 * @throws IOException
+	 * @param u user that is written to file
+	 * @throws IOException throws IOException
 	 */
 	public static void writeUser (User u) throws IOException {
 		String storeFile = "data/users/"+u.userName+".ser"; 

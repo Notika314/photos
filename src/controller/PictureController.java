@@ -100,7 +100,7 @@ public class PictureController {
 	private int currentTab = 0;
 	/**
 	 * Starts the page
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 
 	public void start() throws IOException {  
@@ -179,7 +179,7 @@ public class PictureController {
 		i = ~i;
 		obsTags.add(i, temp);
 		tagList.getSelectionModel().select(i);
-			
+		clearFields((AnchorPane)addTagBtn.getParent());	
 		
 	}
 	/**
