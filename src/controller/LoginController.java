@@ -90,19 +90,25 @@ public class LoginController {
 				return;
 			}
 			else {
-				logInLbl.setStyle("-fx-text-fill: red;");
-				logInLbl.setText("Incorrect username or password");
+//				logInLbl.setStyle("-fx-text-fill: red;");
+				//
+				
+				errorUpdate("Incorrect username or password");
+//				logInLbl.setText("Incorrect username or password");
 				return;
 			}
 		}
 		User user = User.findUser(loginUsrName.getText(),logInPw.getText());
 		if (user==null) {
-			logInLbl.setStyle("-fx-text-fill: red;");
-			logInLbl.setText("Incorrect username or password");
+//			logInLbl.setStyle("-fx-text-fill: red;");
+			
+			
+			errorUpdate("Incorrect username or password");
+//			logInLbl.setText("Incorrect username or password");
 		} else {
-			logInLbl.setStyle("-fx-text-fill: green;");
-			logInLbl.setText("Successful login");
-			System.out.println("successful login");
+//			logInLbl.setStyle("-fx-text-fill: green;");
+//			logInLbl.setText("Successful login");
+//			System.out.println("successful login");
 			User.curr = user;
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/navbar.fxml"));

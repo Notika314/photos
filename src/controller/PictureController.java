@@ -98,7 +98,7 @@ public class PictureController {
 	private int currentTab = 0;
 	/**
 	 * Starts the page
-	 * @throws IOException
+	 * @throws IOException throws IOException
 	 */
 
 	public void start() throws IOException {  
