@@ -263,13 +263,13 @@ public class SearchController {
 		cont.disHome();
 		cont.disLog();
 		loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/slideshow.fxml"));
+		loader.setLocation(getClass().getResource("/view/slideSearch.fxml"));
 		Pane pane = null;
 		try {
 			pane = loader.load();
 		} catch (IOException e) {
 		}
-		SlideshowController temp = loader.getController();
+		SlideSearchController temp = loader.getController();
 		// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 		Picture.curr = selectedPicture;
 		Photos.root.setCenter(pane);

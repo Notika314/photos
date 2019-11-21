@@ -53,11 +53,11 @@ public class Album implements Serializable, Comparable<Album> {
 	 * @param file The file that picture have as a field
 	 * @return true if picture exists in the album, false otherwise
 	 */
-	public boolean pictureExists(File file) {
+	public int pictureExists(Picture pic) {
 		for (int i=0;i<pictures.size();i++) {
-			if (this.pictures.get(i).file.equals(file)) return true;
+			if (this.pictures.get(i).equals(pic)) return i;
 		}
-		return false;
+		return -1;
 	}
 	/**
 	 * getter method
