@@ -65,6 +65,7 @@ public class Picture implements Serializable{
 		this.date= new Date(file.lastModified());
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
+		cal.set(Calendar.MILLISECOND,0);
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1; // Jan = 0, dec = 11
 		int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH); 
@@ -75,6 +76,27 @@ public class Picture implements Serializable{
 		System.out.println("Date is "+this.date);
 		System.out.println("Created at is: "+this.createdAt);
 	}
+	/**
+	 * Initializes a Copy of a Picture such that they are not coupled.
+	 * @param pic
+	 * @param album
+	 */
+	public Picture(Picture pic, Album album) {
+		this.file = pic.file;
+		this.caption = pic.caption;
+		this.date = pic.date;
+		this.createdAt = pic.createdAt;
+		this.album = album;
+		this.user = pic.user;
+		this.tags = new ArrayList<Tag>();
+		for (Tag tag : pic.tags) {
+			if (tag.type.equals("location")) {
+				this.locationTagIsSet = true;
+			}
+			this.tags.add(new Tag(tag.type, tag.value, this));
+		}
+	}
+	
 	/**
 	 * Determines if given tag exists
 	 * @param type Type of the Tag
@@ -125,11 +147,17 @@ public class Picture implements Serializable{
 			if (tags.get(i).equals(tag)) tags.remove(i);
 		}
 	}
-	
+	/*
+	public Picture copy() {
+		Picture temp = new Picture();
+		return temp;
+	}
+	*/
+	/*
 	public boolean equals(Object o) {
 		if (!( o instanceof Picture)) return false;
 		Picture p = (Picture) o;
 		if (p.file.equals(this.file)) return true;
 		else return false;
-	}
+	}*/
 }

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
@@ -20,10 +21,7 @@
 	<children>
 		<HBox prefHeight="830.0" prefWidth="1440.0">
 			<children>
-				<BorderPane prefHeight="830.0" prefWidth="864.0">
-					<center>
-						<ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-					</center>
+				<BorderPane prefHeight="400.0" prefWidth="864.0">
                <bottom>
                   <Label fx:id="CaptionLbl" prefHeight="125.0" prefWidth="559.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
@@ -34,6 +32,9 @@
                      </font>
                   </Label>
                </bottom>
+               <top>
+						<ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </top>
 				</BorderPane>
 				<VBox prefHeight="830.0" prefWidth="576.0">
 					<children>
@@ -48,11 +49,6 @@
 														<AnchorPane prefHeight="394.0" prefWidth="576.0" />
 														<AnchorPane prefHeight="394.0" prefWidth="576.0">
 															<children>
-																<TextField fx:id="captionField" alignment="CENTER" layoutX="32.0" layoutY="13.0" prefHeight="178.0" prefWidth="525.0" promptText="Caption">
-																	<font>
-																		<Font size="20.0" />
-																	</font>
-																</TextField>
 																<Button fx:id="captionBtn" depthTest="ENABLE" layoutX="228.0" layoutY="251.0" mnemonicParsing="false" onAction="#caption" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Set">
 																	<font>
 																		<Font size="19.0" />
@@ -61,6 +57,11 @@
 																		<DropShadow />
 																	</effect>
 																</Button>
+                                                <TextArea fx:id="captionField" layoutX="38.0" layoutY="14.0" prefHeight="200.0" prefWidth="500.0" promptText="Caption" wrapText="true">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </TextArea>
 															</children>
 														</AnchorPane>
 													</children>
