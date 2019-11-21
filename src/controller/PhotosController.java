@@ -106,9 +106,6 @@ public class PhotosController {
 			j = ~j;
 			User.users.add(j,user);
 		}
-		for (Picture pic: User.users.get(1).userAlbums.get(0).pictures) {
-    		System.out.println(pic.file);
-    	}
 		/*
 		System.out.println("All current users are: :");
 		for (int i=0;i<User.users.size();i++) {
