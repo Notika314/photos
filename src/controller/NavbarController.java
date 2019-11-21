@@ -10,17 +10,35 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.User;
 //import controller.LoginController;
-
+/**
+ * Controller for Navigation bar, with buttons common between all pages 
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class NavbarController {
-	
+	/**
+	 * closes the application
+	 */
 	@FXML Button close;
+	/**
+	 * returns to main page
+	 */
 	@FXML Button homeBtn;
+	/**
+	 * logs out
+	 */
 	@FXML Button logOutBtn;
-	
+	/**
+	 * photos Controller
+	 */
 	@FXML protected PhotosController photosController;
 
 
-	
+	/**
+	 * exits the application, saves all the changes
+	 * @throws IOException throws IOException
+	 */
 	public void closeButton() throws IOException {
 		System.out.println("All users are: ");
 		for (int i=0;i<User.users.size();i++) {
@@ -32,7 +50,9 @@ public class NavbarController {
 	    Stage stage = (Stage) close.getScene().getWindow();
 	    stage.close();
 	}
-	
+	/**
+	 * changes visibility of home button
+	 */
 	public void visHome() {
 		if (homeBtn.isVisible()) {
 			homeBtn.setVisible(false);
@@ -41,7 +61,9 @@ public class NavbarController {
 			homeBtn.setVisible(true);
 		}
 	}
-	
+	/**
+	 * changes the status of logOut button
+	 */
 	public void visLog() {
 		if (logOutBtn.isVisible()) {
 			logOutBtn.setVisible(false);
@@ -50,7 +72,9 @@ public class NavbarController {
 			logOutBtn.setVisible(true);
 		}
 	}
-	
+	/**
+	 * toggles homeButton between setDisable false and true
+	 */
 	public void disHome() {
 		if (homeBtn.isDisabled()) {
 			homeBtn.setDisable(false);
@@ -59,7 +83,9 @@ public class NavbarController {
 			homeBtn.setDisable(true);
 		}
 	}
-	
+	/**
+	 * toggles logout button between disable false and true
+	 */
 	public void disLog() {
 		if (logOutBtn.isDisabled()) {
 			logOutBtn.setDisable(false);
@@ -68,7 +94,10 @@ public class NavbarController {
 			logOutBtn.setDisable(true);
 		}
 	}
-	
+	/**
+	 * triggers logging out
+	 * @throws IOException throws IOException
+	 */
 	public void logOut() throws IOException {
 		homeBtn.setDisable(true);
 		logOutBtn.setDisable(true);
@@ -80,7 +109,10 @@ public class NavbarController {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
 		Photos.root.setCenter(pane);
 	}
-	
+	/**
+	 * returns to home page
+	 * @throws IOException throws IOException
+	 */
 	public void home() throws IOException {
 		homeBtn.setDisable(true);
 		FXMLLoader loader = new FXMLLoader();
@@ -91,7 +123,10 @@ public class NavbarController {
 		Photos.root.setCenter(pane);
 		temp.start();
 	}
-	
+	/**
+	 * set photos Controller
+	 * @param photosController controller to be set
+	 */
 	public void setPhotosController(PhotosController photosController) {
 		this.photosController = photosController;
 	}

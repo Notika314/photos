@@ -171,14 +171,20 @@ public class LoginController {
 			temp.start();
 		}
 	}
-
+	/**
+	 * helper method, opens error popup with message
+	 * @param str message to user
+	 */
 	private void errorUpdate(String str) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
 		alert.setHeaderText(str);
 		alert.showAndWait();
 	}
-	
+	/**
+	 * triggers signing up 
+	 * @throws IOException throws IOException
+	 */
 	public void signUp() throws IOException {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/signup.fxml"));
 		Photos.root.setCenter(pane);
