@@ -1,6 +1,7 @@
 package app;
 
-import java.io.File; 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import controller.LoginController;
 import controller.NavbarController;
@@ -17,6 +18,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Album;
+import model.Picture;
+import model.User;
 import controller.LoginController;
 /**
  * Main Driver class that launches the application
@@ -31,10 +35,28 @@ public class Photos extends Application {
     
     public static BorderPane root;
     
+    /*
+    public static void build() throws IOException {
+    	User stock = new User("stock", "stock");
+    	File dir = new File("data/stockPhotos/");
+    	File[] files = dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return ((name.toLowerCase().endsWith("jpg"))||(name.toLowerCase().endsWith("png")));
+			}
+		});
+    	stock.userAlbums.add(new Album("stock",stock));
+    	for (File file : files) {
+        	System.out.println(file);
+
+    		stock.userAlbums.get(0).addPicture(new Picture(stock.userAlbums.get(0),file));
+    	}
+    }*/
+    
     
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{
+		build();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/photos.fxml"));
 		root = loader.load();
