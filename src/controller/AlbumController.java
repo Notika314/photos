@@ -51,50 +51,92 @@ public class AlbumController {
 	 */
 	@FXML
 	TextField renameField;
-	
+	/**
+	 * Field for start date
+	 */
 	@FXML
 	DatePicker startField;
-	
+	/**
+	 * field for end date
+	 */
 	@FXML
 	DatePicker endField;
-	
+	/**
+	 * field for type one
+	 */
 	@FXML
 	TextField typeField1;
-	
+	/**
+	 * field for type two
+	 */
 	@FXML
 	TextField typeField2;
-	
+	/**
+	 * field for value A
+	 */
 	@FXML
 	TextField valueFieldA;
-	
+	/**
+	 * field for value B
+	 */
 	@FXML
 	TextField valueFieldB;
-	
+	/**
+	 * toggles 'and'
+	 */
 	@FXML
 	ToggleButton andBtn;
-	
+	/**
+	 * toggles 'or'
+	 */
 	@FXML
 	ToggleButton orBtn;
-	
+	/**
+	 * triggers search by tags
+	 */
 	@FXML
 	Button searchTagBtn;
-	
+	/**
+	 * triggers search by times
+	 */
 	@FXML
 	Button searchTimesBtn;
-	
+	/**
+	 * List of tag types A used for search
+	 */
 	@FXML
 	ListView<String> typeListA;
-	
+	/**
+	 * List of tag types B
+	 */
 	@FXML
 	ListView<String> typeListB;
-
+	/**
+	 * value used for conjuction search
+	 */
 	private boolean and;
+	/**
+	 * value used for disjunction search
+	 */
 	private boolean or;
+	/**
+	 * Observable list containing to all tags of typeA type
+	 */
 	private ObservableList<String> obsTypeA;  
+	/**
+	 * Observable list containing all tags of type B
+	 */
 	private ObservableList<String> obsTypeB;  
+	/**
+	 * Observble list of albums
+	 */
 	private ObservableList<Album> obsList;  
 
-	
+	/**
+	 * starts the controller,sets all the events listeners
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void start() throws FileNotFoundException,IOException {  
 		obsList = FXCollections.observableList(User.curr.userAlbums); 
 		obsTypeA = FXCollections.observableList(User.curr.tagTypes);
@@ -163,7 +205,9 @@ public class AlbumController {
 	public void details() {
 		//We have to set the various album traits here.
 	}
-	
+	/**
+	 * Triggers creation of the new album 
+	 */
 	public void create() {
 		if (createField.getText() == null || createField.getText().equals("")) {
 			System.out.println("Flag Some Error");
@@ -180,7 +224,9 @@ public class AlbumController {
 		listView.getSelectionModel().select(i);
 		clearFields((AnchorPane)createField.getParent());
 	}
-	
+	/**
+	 * Triggers changing the selected album's name
+	 */
 	public void rename() {
 		if (renameField.getText() == null || renameField.getText().equals("")) {
 			System.out.println("Flag Some Error");
@@ -207,7 +253,9 @@ public class AlbumController {
 			listView.getSelectionModel().select(i);
 		}
 	}
-	
+	/**
+	 * Triggers deletion of the selected album
+	 */
 	public void delete() {
 		if (obsList.size() == 0) {
 			System.out.println("The list is empty");
@@ -226,7 +274,11 @@ public class AlbumController {
 			}
 		}
 	}
-	
+	/**
+	 * Searches pictures by time among all user's pictures
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void searchTimeAll() throws FileNotFoundException, IOException {
 		if (obsList.size() == 0) {
 			System.out.println("The list is empty");
@@ -249,6 +301,11 @@ public class AlbumController {
 		Search.searchByDateRangeInAll(Date.valueOf(startField.getValue()), Date.valueOf(endField.getValue()));
 		swapToSearch();
 	}
+	/**
+	 * Searches pictures by time in the album
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void searchTimeAlbum() throws FileNotFoundException, IOException {
 		if (obsList.size() == 0) {
 			System.out.println("The list is empty");
@@ -271,7 +328,11 @@ public class AlbumController {
 		Search.searchByDateRangeInAlbum(listView.getSelectionModel().getSelectedItem(),Date.valueOf(startField.getValue()), Date.valueOf(endField.getValue()));
 		swapToSearch();
 	}
-	
+	/**
+	 * Searches pictures by tags in all user's photos
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void searchTagAll() throws FileNotFoundException, IOException {
 		if (empty(valueFieldA.getText())) {
 			System.out.println("Input First Tag");
@@ -300,7 +361,11 @@ public class AlbumController {
 		}
 		swapToSearch();
 	}
-	
+	/**
+	 * Searches pictures In album by tag
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOEXception
+	 */
 	public void searchTagAlbum() throws FileNotFoundException, IOException {
 		if (empty(valueFieldA.getText())) {
 			System.out.println("Input First Tag");
@@ -329,7 +394,9 @@ public class AlbumController {
 		}
 		swapToSearch();
 	}
-	
+	/**
+	 * selects or button, disables and button
+	 */
 	public void or() {
 		andBtn.setSelected(false);
 		if (or) {
@@ -340,7 +407,9 @@ public class AlbumController {
 		}
 		and = false;
 	}
-	
+	/**
+	 * selects and button, disables or button
+	 */
 	public void and() {
 		orBtn.setSelected(false);
 		if (and) {
@@ -351,7 +420,11 @@ public class AlbumController {
 		}
 		or = false;
 	}
-	
+	/**
+	 * helper method, swaps to earch
+	 * @throws FileNotFoundException throws exception when file not found
+	 * @throws IOException throws IOException
+	 */
 	private void swapToSearch() throws FileNotFoundException, IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/navbar.fxml"));
@@ -377,14 +450,21 @@ public class AlbumController {
 		Photos.root.setCenter(pane);
 		temp.start();
 	}
-	
+	/**
+	 * helper method 
+	 * @param s determines if field is empty
+	 * @return true if field is empty
+	 */
 	private boolean empty(String s) {
 		if (s == null || s.equals("") || s.trim().length() == 0) {
 			return true;
 		}
 		return false;
 	}
-	
+	/**
+	 * helper method, clears fields 
+	 * @param pane
+	 */
 	private void clearFields(AnchorPane pane) {
 		for (Node node : pane.getChildren()) {
 			if (node instanceof TextField) {

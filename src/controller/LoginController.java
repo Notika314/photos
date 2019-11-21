@@ -28,13 +28,30 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
+/**
+ * Controller for Login page, where user can login 
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class LoginController {
 
 //	@FXML protected NavbarController navbarController;
-	
+	/**
+	 * triggers logging in
+	 */
 	@FXML Button logInBtn;
+	/**
+	 * triggers signu=ing up
+	 */
 	@FXML Button signUpBtn;
+	/**
+	 * label for showing the status of signing up
+	 */
 	@FXML Label signUpLbl;
+	/**
+	 * label that shows the status of logging in
+	 */
 	@FXML Label logInLbl;
 	@FXML TextField newUsrName;
 	@FXML TextField loginUsrName;
