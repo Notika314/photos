@@ -16,6 +16,13 @@ import model.Album;
 import model.Picture;
 import model.Search;
 
+/**
+ * Controller for SlideSearch page, where user view slideshow when in search ,
+ * list or delete accounts
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class SlideSearchController {
 
 	@FXML
@@ -23,8 +30,16 @@ public class SlideSearchController {
 	@FXML Button returnBtn;
 	@FXML Button forwardBtn;
 	@FXML Button backwardBtn;
+	
+	/**
+	 * Tracker for how far along we are.
+	 */
 	private int i;
 	
+	/**
+	 * Start of the SlideShow controller.
+	 * @throws IOException
+	 */
 	public void start() throws IOException {
 	    image.setImage(new Image(new FileInputStream(Picture.curr.file)));
 	    for (i = 0; i < Search.searchResult.size(); i++) {
@@ -47,6 +62,9 @@ public class SlideSearchController {
 	    
 	}
 	
+	/**
+	 * Goes back to the previous window.
+	 */
 	public void returnLast() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/navbar.fxml"));
@@ -74,11 +92,19 @@ public class SlideSearchController {
 		} 
 	}
 	
+	/**
+	 * Advances forward one degree.
+	 * @throws IOException
+	 */
 	public void forward() throws IOException {
 		Picture.curr = Search.searchResult.get(i+1);
 	    start();
 	}
 	
+	/**
+	 * Goes backwards one degree.
+	 * @throws IOException
+	 */
 	public void backward() throws IOException {
 		Picture.curr = Search.searchResult.get(i-1);
 		start();

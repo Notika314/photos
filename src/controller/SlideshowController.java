@@ -15,6 +15,13 @@ import javafx.scene.layout.Pane;
 import model.Album;
 import model.Picture;
 
+/**
+ * Controller for SlideShow page, where user view slideshow ,
+ * list or delete accounts
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class SlideshowController {
 
 	@FXML
@@ -22,8 +29,16 @@ public class SlideshowController {
 	@FXML Button returnBtn;
 	@FXML Button forwardBtn;
 	@FXML Button backwardBtn;
+	
+	/**
+	 * Tracker for how far along we are.
+	 */
 	private int i;
 	
+	/**
+	 * Start of the SlideShow controller.
+	 * @throws IOException
+	 */
 	public void start() throws IOException {
 	    image.setImage(new Image(new FileInputStream(Picture.curr.file)));
 	    i = Album.curr.pictureExists(Picture.curr);
@@ -42,6 +57,9 @@ public class SlideshowController {
 	    
 	}
 	
+	/**
+	 * Goes back to the previous window.
+	 */
 	public void returnLast() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/navbar.fxml"));
@@ -70,11 +88,19 @@ public class SlideshowController {
 		}
 	}
 	
+	/**
+	 * Advances forward one degree.
+	 * @throws IOException
+	 */
 	public void forward() throws IOException {
 		Picture.curr = Album.curr.pictures.get(i+1);
 	    start();
 	}
 	
+	/**
+	 * Goes backwards one degree.
+	 * @throws IOException
+	 */
 	public void backward() throws IOException {
 		Picture.curr = Album.curr.pictures.get(i-1);
 		start();
