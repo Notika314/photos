@@ -54,14 +54,12 @@ public class LoginController {
 			User u;
 			if (split.length==2) {
 				u = new User(split[0],split[1]);
-				System.out.println("Creating new user: "+u.userName+" "+ u.password);
 			} 
 		}
 		sc.close();
 	}
 	
 	public void login() throws IOException {
-		System.out.println("in login");
 		if (loginUsrName.getText().toLowerCase().equals("admin")) {
 			if (logInPw.getText().equals("admin")) {
 				FXMLLoader loader = new FXMLLoader();

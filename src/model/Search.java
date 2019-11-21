@@ -9,7 +9,7 @@ import java.util.function.Predicate;
  * @author Christopher Taglieri cat 197
  *
  */
-public class Search {
+public abstract class Search {
 	static ArrayList<Picture> searchResult;
 
 	

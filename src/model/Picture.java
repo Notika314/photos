@@ -3,23 +3,60 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
+/**
+ * Class that implements logic of how Pictures are created,
+ * how new tags and captions for pictures are added and modified
+ * @author Christopher Taglieri cat 197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class Picture implements Serializable{
+	/**
+	 * file where picture is stored on machine
+	 */
 	public File file; 
+	/**
+	 * User's description of the picture
+	 */
 	public String caption;
-	Date date;
-	String createdAt;
+	/**
+	 * Date when picture was last modified
+	 */
+	public Date date;
+	/**
+	 * String representation of date
+	 */
+	public String createdAt;
+	/**
+	 * boolean value that is true if locationTag of photo is set
+	 */
 	public boolean locationTagIsSet=false;
+	/**
+	 * Album in which picture is located
+	 */
 	public Album album;
+	/**
+	 * User that created the picture
+	 */
 	public User user;
+	/**
+	 * All the tags of the picture
+	 */
 	public ArrayList<Tag> tags;
+	/**
+	 * Static field ,currently selected picture
+	 */
 	public static Picture curr;
+	/**
+	 * Long integer used for serialization and deserialization purposes
+	 */
 	static final long serialVersionUID = 1L;
 	
 	/**
-	 * 
-	 * @param album
-	 * @param file
-	 * @param caption
+	 * Initializes Picture with given Album and File
+	 * @param album Album in which picture is created
+	 * @param file File in which picture is located on machine
+	 * @param caption Caption of the picture, initialized to empty string
 	 * @throws IOException 
 	 */
 	public Picture(Album album, File file) throws IOException {
@@ -38,6 +75,13 @@ public class Picture implements Serializable{
 		System.out.println("Date is "+this.date);
 		System.out.println("Created at is: "+this.createdAt);
 	}
+	/**
+	 * Determines if given tag exists
+	 * @param type Type of the Tag
+	 * @param value Value of the Tag
+	 * @return true if tag with given name and value exists,
+	 * false otherwise
+	 */
 	protected boolean tagExists(String type,String value) {
 		for (int i=0;i<tags.size();i++) {
 			if (tags.get(i).type.toLowerCase().equals(type.toLowerCase()) 
@@ -45,11 +89,18 @@ public class Picture implements Serializable{
 		}
 		return false;
 	}
-	
+	/**
+	 * changes caption of the picture
+	 * @param newCaption new caption to be set 
+	 */
 	public void recaption(String newCaption) {
 		this.caption = newCaption;
 	}
-	
+	/**
+	 * Adds new tag with given name and value
+	 * @param type Name of tag to be added
+	 * @param value Value of the tag to be added
+	 */
 	public void addTag(String type,String value) {
 		if (type.equals("location") && locationTagIsSet) {
 			for(int i=0;i<this.tags.size();i++) {
@@ -65,7 +116,10 @@ public class Picture implements Serializable{
 			return;
 		}*/
 	}
-	
+	/**
+	 * Deletes the tag 
+	 * @param tag Tag to be deleted
+	 */
 	public void deleteTag(String tag) {
 		for (int i=0;i<tags.size();i++) {
 			if (tags.get(i).equals(tag)) tags.remove(i);

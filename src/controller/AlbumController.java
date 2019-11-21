@@ -23,20 +23,33 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
-
+/**
+ * Controller for Album page, where all albums are listed, can be created,
+ * renamed, deleted, and searched by date range ,or tags
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class AlbumController {
-	
+	/**
+	 * Lists all user's albums
+	 */
 	@FXML
 	ListView<Album> listView;
-	
+	/**
+	 * field for entering new album's name
+	 */
 	@FXML
 	TextField createField;
+	/**
+	 * field for changing album's name
+	 */
 	@FXML
 	TextField renameField;
 	
 	private ObservableList<Album> obsList;  
 
-
+	
 	public void start() throws FileNotFoundException,IOException {  
 		obsList = FXCollections.observableList(User.curr.userAlbums); 
 		listView.setItems(obsList); 

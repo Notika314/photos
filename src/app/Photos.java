@@ -18,14 +18,20 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import controller.LoginController;
+/**
+ * Main Driver class that launches the application
+ * @author Natalia Bryzhatenko nb631
+ *@author Christopher Taglieri cat197
+ */
 public class Photos extends Application {
-
+	
 	private double xOffset = 0;
+	
     private double yOffset = 0;
     
     public static BorderPane root;
     
-
+    
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{
