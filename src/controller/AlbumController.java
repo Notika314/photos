@@ -207,6 +207,9 @@ public class AlbumController {
     			{renameField.setText(listView.getSelectionModel().getSelectedItem().albumName);}}); 
     }
 	
+	/**
+	 * Gathers the details of a Album.
+	 */
 	private void details() {
 		if (obsList.size() == 0) {
 			return;
@@ -487,6 +490,10 @@ public class AlbumController {
 		}
 	}
 	
+	/**
+	 * Updates various errors
+	 * @param str message
+	 */
 	private void errorUpdate(String str) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");

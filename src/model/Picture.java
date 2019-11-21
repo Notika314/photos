@@ -56,7 +56,6 @@ public class Picture implements Serializable{
 	 * Initializes Picture with given Album and File
 	 * @param album Album in which picture is created
 	 * @param file File in which picture is located on machine
-	 * @param caption Caption of the picture, initialized to empty string
 	 * @throws IOException  throws IOException
 	 */
 	public Picture(Album album, File file) throws IOException {

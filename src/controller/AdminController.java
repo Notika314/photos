@@ -169,10 +169,5 @@ public class AdminController {
 		}
 	}
 	
-	private void errorUpdate(String str) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("ERROR");
-		alert.setHeaderText(str);
-		alert.showAndWait();
-	}
+
 }

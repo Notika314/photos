@@ -33,29 +33,18 @@ public class Photos extends Application {
 	
     private double yOffset = 0;
     
+    /**
+     * Field of the main window
+     */
     public static BorderPane root;
    
     
-    public static void build() throws IOException {
-    	/*User stock = new User("stock", "stock");
-    	File dir = new File("data/stockPhotos/");
-    	File[] files = dir.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return ((name.toLowerCase().endsWith("jpg"))||(name.toLowerCase().endsWith("png")));
-			}
-		});
-    	stock.userAlbums.add(new Album("stock",stock));
-    	for (File file : files) {
-        	System.out.println(file);
-
-    		stock.userAlbums.get(0).addPicture(new Picture(stock.userAlbums.get(0),file));
-    	}*/
-    	
-    	
-    }
-    
     
 	@Override
+	/**
+	 * starts entire program
+	 * @param primageStage window
+	 */
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{
 		FXMLLoader loader = new FXMLLoader();
@@ -87,6 +76,10 @@ public class Photos extends Application {
 		primaryStage.show(); 
 	}
 	
+	/**
+	 * main method
+	 * @param args string input
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

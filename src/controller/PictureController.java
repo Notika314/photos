@@ -220,6 +220,10 @@ public class PictureController {
 		}
 	}
 	
+	/**
+	 * Updates various errors
+	 * @param str message
+	 */
 	private void errorUpdate(String str) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");

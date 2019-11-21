@@ -67,12 +67,22 @@ public class SignUpController {
 	
 	
 	
-	
+	/**
+	 * start of controller
+	 * @param mainStage main
+	 * @throws FileNotFoundException error
+	 * @throws IOException error
+	 */
 	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
 //		navbarController.setLoginController(this);
 		getAllUsersFromFile();	
 	}
 	
+	/**
+	 * gets users from file
+	 * @throws FileNotFoundException error
+	 * @throws IOException error
+	 */
 	private void getAllUsersFromFile() throws FileNotFoundException,IOException {
 		if (!new File("users.txt").exists()) {
 			return;
@@ -90,6 +100,10 @@ public class SignUpController {
 		sc.close();
 	}
 	
+	/**
+	 * Signs user up
+	 * @throws IOException error
+	 */
 	public void signup() throws IOException {
 		String name = newUsrName.getText();
 		String password = newUsrPw.getText();
@@ -110,7 +124,10 @@ public class SignUpController {
 		}
 	}
 	
-	
+	/**
+	 * takes us back to login
+	 * @throws IOException error
+	 */
 	public void returnLogin() throws IOException {
 		Pane pane = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
 		System.out.println(pane);
@@ -118,13 +135,15 @@ public class SignUpController {
 
 	}
 	
+	/**
+	 * Signs user up
+	 * @param e event
+	 */
 	public void signupPress(ActionEvent e) {
 		Button b = (Button)e.getSource();
 		System.out.println("b is "+b);
 	}
 	
-	public void setPhotosController(PhotosController photosController) {
-		this.photosController = photosController;
-	}
+
 	
 }
