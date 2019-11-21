@@ -119,6 +119,7 @@ public class LoginController {
 			temp.start();
 		}
 	}
+	
 
 	private void errorUpdate(String str) {
 		Alert alert = new Alert(AlertType.ERROR);

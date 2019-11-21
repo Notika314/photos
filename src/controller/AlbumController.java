@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 import app.Photos;
@@ -13,11 +14,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -87,6 +90,12 @@ public class AlbumController {
 	
 	@FXML
 	ListView<String> typeListB;
+	@FXML
+	Text numPhotos;
+	@FXML
+	Text earlyDate;
+	@FXML
+	Text lateDate;
 
 	private boolean and;
 	private boolean or;
@@ -104,10 +113,6 @@ public class AlbumController {
 		typeListA.setItems(obsTypeA);
 		typeListB.setItems(obsTypeB);
 
-		
-		for (int i = 0; i < obsList.size(); i++) {
-			System.out.println(obsList.get(i));
-		}
 
 		//may need to put this else where
 		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -134,7 +139,6 @@ public class AlbumController {
 						} catch (IOException e) {
 						}
 						InAlbumController temp = loader.getController();
-						// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 						Album.curr = listView.getSelectionModel().getSelectedItem();
 						Photos.root.setCenter(pane);
 						try {
@@ -160,17 +164,23 @@ public class AlbumController {
     			{renameField.setText(listView.getSelectionModel().getSelectedItem().albumName);}}); 
     }
 	
-	public void details() {
-		//We have to set the various album traits here.
+	private void details() {
+		if (obsList.size() == 0) {
+			return;
+		}
+		Album item = listView.getSelectionModel().getSelectedItem();
+		numPhotos.setText(item.pictures.size()+"");
+		earlyDate.setText(item.getEarliest().date+"");
+		lateDate.setText(item.getLatest().date+"");
 	}
 	
 	public void create() {
 		if (createField.getText() == null || createField.getText().equals("")) {
-			System.out.println("Flag Some Error");
+			errorUpdate("Please Input a Name");
 			return;
 		}
 		if (User.curr.albumExists(createField.getText())) {
-			System.out.println("Flag Duplicate");
+			errorUpdate("Duplicate Album Exists!");
 			return;
 		}
 		Album temp = new Album(createField.getText(), User.curr);
@@ -183,11 +193,11 @@ public class AlbumController {
 	
 	public void rename() {
 		if (renameField.getText() == null || renameField.getText().equals("")) {
-			System.out.println("Flag Some Error");
+			errorUpdate("Please Input a Name");
 			return;
 		}
 		if (User.curr.albumExists(renameField.getText())) {
-			System.out.println("Flag Duplicate");
+			errorUpdate("Duplicate Album Exists!");
 			return;
 		}
 		Album temp = new Album(renameField.getText(), User.curr);
@@ -210,7 +220,7 @@ public class AlbumController {
 	
 	public void delete() {
 		if (obsList.size() == 0) {
-			System.out.println("The list is empty");
+			errorUpdate("The list is empty");
 			return;
 		}
 		else {
@@ -229,7 +239,7 @@ public class AlbumController {
 	
 	public void searchTimeAll() throws FileNotFoundException, IOException {
 		if (obsList.size() == 0) {
-			System.out.println("The list is empty");
+			errorUpdate("The list is empty");
 			return;
 		}
 		/*
@@ -239,11 +249,11 @@ public class AlbumController {
 			return;
 		} */
 		if (startField.getValue() == null || endField.getValue() == null) {
-			System.out.println("Input valid start/end date");
+			errorUpdate("Input valid start/end date");
 			return;
 		}
 		if (startField.getValue().compareTo(endField.getValue()) > 0) {
-			System.out.println("Start must come before end");
+			errorUpdate("Start must come before end");
 			return;
 		}
 		Search.searchByDateRangeInAll(Date.valueOf(startField.getValue()), Date.valueOf(endField.getValue()));
@@ -251,7 +261,7 @@ public class AlbumController {
 	}
 	public void searchTimeAlbum() throws FileNotFoundException, IOException {
 		if (obsList.size() == 0) {
-			System.out.println("The list is empty");
+			errorUpdate("The list is empty");
 			return;
 		}
 		/*
@@ -261,11 +271,11 @@ public class AlbumController {
 			return;
 		} */
 		if (startField.getValue() == null || endField.getValue() == null) {
-			System.out.println("Input valid start/end date");
+			errorUpdate("Input valid start/end date");
 			return;
 		}
 		if (startField.getValue().compareTo(endField.getValue()) > 0) {
-			System.out.println("Start must come before end");
+			errorUpdate("Start must come before end");
 			return;
 		}
 		Search.searchByDateRangeInAlbum(listView.getSelectionModel().getSelectedItem(),Date.valueOf(startField.getValue()), Date.valueOf(endField.getValue()));
@@ -274,15 +284,15 @@ public class AlbumController {
 	
 	public void searchTagAll() throws FileNotFoundException, IOException {
 		if (empty(valueFieldA.getText())) {
-			System.out.println("Input First Tag");
+			errorUpdate("Input First Tag");
 			return;
 		}
 		if (!or && !and && !empty(valueFieldB.getText())) {
-			System.out.println("Select either AND OR");
+			errorUpdate("Select either AND OR");
 			return;
 		}
 		if ((or || and) && empty(valueFieldB.getText())){
-			System.out.println("Input Second Tag");
+			errorUpdate("Input Second Tag");
 			return;
 		}
 		if (empty(valueFieldB.getText())) {
@@ -303,15 +313,15 @@ public class AlbumController {
 	
 	public void searchTagAlbum() throws FileNotFoundException, IOException {
 		if (empty(valueFieldA.getText())) {
-			System.out.println("Input First Tag");
+			errorUpdate("Input First Tag");
 			return;
 		}
 		if (!or && !and && !empty(valueFieldB.getText())) {
-			System.out.println("Select either AND OR");
+			errorUpdate("Select either AND OR");
 			return;
 		}
 		if ((or || and) && empty(valueFieldB.getText())){
-			System.out.println("Input Second Tag");
+			errorUpdate("Input Second Tag");
 			return;
 		}
 		if (empty(valueFieldB.getText())) {
@@ -394,5 +404,12 @@ public class AlbumController {
 				((Text)node).setText(null);
 			}
 		}
+	}
+	
+	private void errorUpdate(String str) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
+		alert.setHeaderText(str);
+		alert.showAndWait();
 	}
 }

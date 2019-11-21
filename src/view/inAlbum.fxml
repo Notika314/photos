@@ -14,24 +14,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1440.0" stylesheets="@inAlbumTab.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InAlbumController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
+	prefWidth="1440.0" stylesheets="@inAlbumTab.css"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.InAlbumController">
 	<children>
 		<HBox prefHeight="830.0" prefWidth="1440.0">
 			<children>
-				<ScrollPane hbarPolicy="NEVER" prefHeight="830.0" prefWidth="864.0" vbarPolicy="NEVER">
+				<ScrollPane hbarPolicy="NEVER" prefHeight="830.0"
+					prefWidth="864.0" vbarPolicy="NEVER">
 					<content>
-						<TilePane fx:id="tiles" prefHeight="830.0" style="-fx-padding: 15, 15, 15, 15;" />
+						<TilePane fx:id="tiles" prefHeight="830.0"
+							style="-fx-padding: 15, 15, 15, 15;" />
 					</content>
 				</ScrollPane>
 				<VBox prefHeight="830.0" prefWidth="720.0">
 					<children>
-						<TabPane fx:id="tabs" prefHeight="830.0" prefWidth="576.0" tabClosingPolicy="UNAVAILABLE">
+						<TabPane fx:id="tabs" prefHeight="830.0" prefWidth="576.0"
+							tabClosingPolicy="UNAVAILABLE">
 							<tabs>
-								<Tab closable="false" onSelectionChanged="#tab0" style="-fx-background-radius: 0;" text="Add/Delete/Caption">
+								<Tab closable="false" onSelectionChanged="#tab0"
+									style="-fx-background-radius: 0;" text="Add/Delete/Caption">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="576.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="830.0" prefWidth="576.0">
 											<children>
-												<Button fx:id="addBtn" depthTest="ENABLE" layoutX="240.0" layoutY="110.0" mnemonicParsing="false" onAction="#add" prefHeight="60.0" prefWidth="160.0" style="-fx-background-radius: 0;" text="Add">
+												<Button fx:id="addBtn" depthTest="ENABLE"
+													layoutX="240.0" layoutY="110.0" mnemonicParsing="false"
+													onAction="#add" prefHeight="60.0" prefWidth="160.0"
+													style="-fx-background-radius: 0;" text="Add">
 													<font>
 														<Font size="19.0" />
 													</font>
@@ -39,7 +52,10 @@
 														<DropShadow />
 													</effect>
 												</Button>
-												<Button fx:id="deleteBtn" depthTest="ENABLE" layoutX="240.0" layoutY="300.0" mnemonicParsing="false" onAction="#delete" prefHeight="60.0" prefWidth="160.0" style="-fx-background-radius: 0;" text="Delete">
+												<Button fx:id="deleteBtn" depthTest="ENABLE"
+													layoutX="240.0" layoutY="300.0" mnemonicParsing="false"
+													onAction="#delete" prefHeight="60.0" prefWidth="160.0"
+													style="-fx-background-radius: 0;" text="Delete">
 													<font>
 														<Font size="19.0" />
 													</font>
@@ -47,12 +63,17 @@
 														<DropShadow />
 													</effect>
 												</Button>
-												<TextField fx:id="captionField" alignment="CENTER" layoutX="164.0" layoutY="484.0" prefHeight="42.0" prefWidth="320.0" promptText="Caption">
+												<TextField fx:id="captionField" alignment="CENTER"
+													layoutX="164.0" layoutY="484.0" prefHeight="42.0"
+													prefWidth="320.0" promptText="Caption">
 													<font>
 														<Font size="20.0" />
 													</font>
 												</TextField>
-												<Button fx:id="captionBtn" depthTest="ENABLE" layoutX="264.0" layoutY="608.0" mnemonicParsing="false" onAction="#caption" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Set">
+												<Button fx:id="captionBtn" depthTest="ENABLE"
+													layoutX="264.0" layoutY="608.0" mnemonicParsing="false"
+													onAction="#caption" prefHeight="40.0" prefWidth="120.0"
+													style="-fx-background-radius: 0;" text="Set">
 													<font>
 														<Font size="19.0" />
 													</font>
@@ -64,25 +85,43 @@
 										</AnchorPane>
 									</content>
 								</Tab>
-								<Tab closable="false" onSelectionChanged="#tab1" style="-fx-background-radius: 0;" text="Tags">
+								<Tab closable="false" onSelectionChanged="#tab1"
+									style="-fx-background-radius: 0;" text="Tags">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="576.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="830.0" prefWidth="576.0">
 											<children>
-												<VBox prefHeight="788.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+												<VBox prefHeight="788.0" prefWidth="576.0"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 													<children>
-														<ListView fx:id="tagList" prefHeight="308.0" prefWidth="576.0" />
-														<AnchorPane prefHeight="210.0" prefWidth="576.0">
+														<ListView fx:id="tagList" prefHeight="308.0"
+															prefWidth="576.0" />
+														<AnchorPane prefHeight="210.0"
+															prefWidth="576.0">
 															<children>
-																<HBox layoutX="60.0" layoutY="14.0" maxWidth="576.0" prefHeight="210.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+																<HBox layoutX="60.0" layoutY="14.0"
+																	maxWidth="576.0" prefHeight="210.0" prefWidth="576.0"
+																	AnchorPane.bottomAnchor="0.0"
+																	AnchorPane.leftAnchor="0.0"
+																	AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 																	<children>
-																		<AnchorPane prefHeight="210.0" prefWidth="360.0">
+																		<AnchorPane prefHeight="210.0"
+																			prefWidth="360.0">
 																			<children>
-																				<TextField fx:id="typeField" alignment="CENTER" layoutX="70.0" layoutY="29.0" prefHeight="42.0" prefWidth="220.0" promptText="Tag Type">
+																				<TextField fx:id="typeField"
+																					alignment="CENTER" layoutX="70.0" layoutY="29.0"
+																					prefHeight="42.0" prefWidth="220.0"
+																					promptText="Tag Type">
 																					<font>
 																						<Font size="20.0" />
 																					</font>
 																				</TextField>
-																				<Button fx:id="addTypeBtn" depthTest="ENABLE" layoutX="120.0" layoutY="116.0" mnemonicParsing="false" onAction="#addType" prefHeight="30.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Add Type">
+																				<Button fx:id="addTypeBtn" depthTest="ENABLE"
+																					layoutX="120.0" layoutY="116.0"
+																					mnemonicParsing="false" onAction="#addType"
+																					prefHeight="30.0" prefWidth="120.0"
+																					style="-fx-background-radius: 0;" text="Add Type">
 																					<font>
 																						<Font size="19.0" />
 																					</font>
@@ -92,18 +131,27 @@
 																				</Button>
 																			</children>
 																		</AnchorPane>
-																		<ListView fx:id="typeList" prefHeight="210.0" prefWidth="289.0" />
+																		<ListView fx:id="typeList" prefHeight="210.0"
+																			prefWidth="289.0" />
 																	</children>
 																</HBox>
 															</children>
 														</AnchorPane>
-														<TabPane prefHeight="270.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+														<TabPane prefHeight="270.0" prefWidth="200.0"
+															tabClosingPolicy="UNAVAILABLE">
 															<tabs>
-																<Tab style="-fx-pref-width: 312; -fx-background-radius: 0;" text="Add">
+																<Tab
+																	style="-fx-pref-width: 312; -fx-background-radius: 0;"
+																	text="Add">
 																	<content>
-																		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="200.0">
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="220.0" prefWidth="200.0">
 																			<children>
-																				<Button fx:id="addTagBtn" depthTest="ENABLE" layoutX="264.0" layoutY="123.0" mnemonicParsing="false" onAction="#addTag" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 0;" text="Add Tag">
+																				<Button fx:id="addTagBtn" depthTest="ENABLE"
+																					layoutX="264.0" layoutY="123.0"
+																					mnemonicParsing="false" onAction="#addTag"
+																					prefHeight="40.0" prefWidth="120.0"
+																					style="-fx-background-radius: 0;" text="Add Tag">
 																					<font>
 																						<Font size="19.0" />
 																					</font>
@@ -111,7 +159,10 @@
 																						<DropShadow />
 																					</effect>
 																				</Button>
-																				<TextField fx:id="tagField" alignment="CENTER" layoutX="214.0" layoutY="43.0" prefHeight="42.0" prefWidth="220.0" promptText="Tag Value">
+																				<TextField fx:id="tagField"
+																					alignment="CENTER" layoutX="214.0" layoutY="43.0"
+																					prefHeight="42.0" prefWidth="220.0"
+																					promptText="Tag Value">
 																					<font>
 																						<Font size="20.0" />
 																					</font>
@@ -120,11 +171,18 @@
 																		</AnchorPane>
 																	</content>
 																</Tab>
-																<Tab style="-fx-pref-width: 312; -fx-background-radius: 0;" text="Delete">
+																<Tab
+																	style="-fx-pref-width: 312; -fx-background-radius: 0;"
+																	text="Delete">
 																	<content>
-																		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+																		<AnchorPane minHeight="0.0" minWidth="0.0"
+																			prefHeight="180.0" prefWidth="200.0">
 																			<children>
-																				<Button fx:id="deleteTagBtn" depthTest="ENABLE" layoutX="254.0" layoutY="74.0" mnemonicParsing="false" onAction="#deleteTag" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 0;" text="Delete Tag">
+																				<Button fx:id="deleteTagBtn"
+																					depthTest="ENABLE" layoutX="254.0" layoutY="74.0"
+																					mnemonicParsing="false" onAction="#deleteTag"
+																					prefHeight="40.0" prefWidth="140.0"
+																					style="-fx-background-radius: 0;" text="Delete Tag">
 																					<font>
 																						<Font size="19.0" />
 																					</font>
@@ -144,16 +202,26 @@
 										</AnchorPane>
 									</content>
 								</Tab>
-								<Tab closable="false" onSelectionChanged="#tab2" style="-fx-background-radius: 0;" text="Move/Copy">
+								<Tab closable="false" onSelectionChanged="#tab2"
+									style="-fx-background-radius: 0;" text="Move/Copy">
 									<content>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0"
+											prefHeight="180.0" prefWidth="200.0">
 											<children>
-												<VBox layoutX="163.0" layoutY="60.0" prefHeight="788.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+												<VBox layoutX="163.0" layoutY="60.0" prefHeight="788.0"
+													prefWidth="576.0" AnchorPane.bottomAnchor="0.0"
+													AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+													AnchorPane.topAnchor="0.0">
 													<children>
-														<ListView fx:id="albumList" prefHeight="591.0" prefWidth="200.0" />
-														<AnchorPane prefHeight="197.0" prefWidth="200.0">
+														<ListView fx:id="albumList" prefHeight="591.0"
+															prefWidth="200.0" />
+														<AnchorPane prefHeight="197.0"
+															prefWidth="200.0">
 															<children>
-																<Button fx:id="copyBtn" depthTest="ENABLE" layoutX="94.0" layoutY="60.0" mnemonicParsing="false" onAction="#copyTo" prefHeight="60.0" prefWidth="160.0" style="-fx-background-radius: 0;" text="Copy To">
+																<Button fx:id="copyBtn" depthTest="ENABLE"
+																	layoutX="94.0" layoutY="60.0" mnemonicParsing="false"
+																	onAction="#copyTo" prefHeight="60.0" prefWidth="160.0"
+																	style="-fx-background-radius: 0;" text="Copy To">
 																	<font>
 																		<Font size="19.0" />
 																	</font>
@@ -161,7 +229,10 @@
 																		<DropShadow />
 																	</effect>
 																</Button>
-																<Button fx:id="moveBtn" depthTest="ENABLE" layoutX="366.0" layoutY="60.0" mnemonicParsing="false" onAction="#moveTo" prefHeight="60.0" prefWidth="160.0" style="-fx-background-radius: 0;" text="Move To">
+																<Button fx:id="moveBtn" depthTest="ENABLE"
+																	layoutX="366.0" layoutY="60.0" mnemonicParsing="false"
+																	onAction="#moveTo" prefHeight="60.0" prefWidth="160.0"
+																	style="-fx-background-radius: 0;" text="Move To">
 																	<font>
 																		<Font size="19.0" />
 																	</font>
@@ -177,7 +248,8 @@
 										</AnchorPane>
 									</content>
 								</Tab>
-								<Tab fx:id="slideShowBtn" onSelectionChanged="#slideShow" text="Slideshow" />
+								<Tab fx:id="slideShowBtn" onSelectionChanged="#slideShow"
+									text="Slideshow" />
 							</tabs>
 						</TabPane>
 					</children>

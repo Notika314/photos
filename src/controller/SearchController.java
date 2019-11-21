@@ -12,10 +12,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -114,7 +116,6 @@ public class SearchController {
 			imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 	            @Override
 	            public void handle(MouseEvent mouseEvent) {
-					System.out.println("tester");
 					selectedImage = (ImageView)mouseEvent.getSource();
 					selectedPicture = picture;
 					updateCaption();
@@ -143,7 +144,6 @@ public class SearchController {
 							} catch (IOException e) {
 							}
 							PictureController temp = loader.getController();
-							// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 							Picture.curr = picture;
 							Photos.root.setCenter(pane);
 							try {
@@ -166,7 +166,7 @@ public class SearchController {
 			captionField.setText(null);
 		}
 		else {
-			System.out.println("Select a Picture");
+			errorUpdate("Select a Picture");
 		}
 	}
 	
@@ -182,7 +182,7 @@ public class SearchController {
 	public void addType() {
 		int i = Collections.binarySearch(User.curr.tagTypes, typeField.getText(), String::compareToIgnoreCase);
 		if (i >= 0) {
-			System.out.println("Type Already Exits");
+			errorUpdate("Type Already Exits");
 		}
 		else {
 			i = ~i;
@@ -193,16 +193,16 @@ public class SearchController {
 	
 	public void addTag() {
 		if (selectedPicture == null) {
-			System.out.println("Select a photo");
+			errorUpdate("Select a photo");
 			return;
 		}
 		if (tagField.getText() == null || tagField.getText() == "" || tagField.getText().trim().length() == 0) {
-			System.out.println("Input valid value");
+			errorUpdate("Input valid value");
 			return;
 		}
 		if (typeList.getSelectionModel().getSelectedItem().equals("location")) {
 			if (selectedPicture.locationTagIsSet) {
-				System.out.println("Location is Unique!");
+				errorUpdate("Location is Unique!");
 				return;
 			}
 			selectedPicture.locationTagIsSet = true;
@@ -210,7 +210,7 @@ public class SearchController {
 		Tag temp = new Tag(typeList.getSelectionModel().getSelectedItem(),tagField.getText(),selectedPicture);
 		int i = Collections.binarySearch(obsTags, temp);
 		if (i >= 0) {
-			System.out.println("Tag Already exits");
+			errorUpdate("Tag Already exits");
 			return;
 		}
 		i = ~i;
@@ -222,11 +222,11 @@ public class SearchController {
 	
 	public void deleteTag() {
 		if (obsTags.size() == 0) {
-			System.out.println("The list is empty");
+			errorUpdate("The list is empty");
 			return;
 		}
 		if (selectedPicture == null) {
-			System.out.println("Select a photo");
+			errorUpdate("Select a photo");
 			return;
 		}
 		else {
@@ -270,7 +270,6 @@ public class SearchController {
 		} catch (IOException e) {
 		}
 		SlideSearchController temp = loader.getController();
-		// Pane pane = FXMLLoader.load(getClass().getResource("/view/album.fxml"));
 		Picture.curr = selectedPicture;
 		Photos.root.setCenter(pane);
 		try {
@@ -281,11 +280,11 @@ public class SearchController {
 
 	public void create() {
 		if (createField.getText() == null || createField.getText().equals("")) {
-			System.out.println("Flag Some Error");
+			errorUpdate("Please give a valid name");
 			return;
 		}
 		if (User.curr.albumExists(createField.getText())) {
-			System.out.println("Flag Duplicate");
+			errorUpdate("Duplicate Album name Exists");
 			return;
 		}
 		Album temp = new Album(createField.getText(), User.curr);
@@ -320,5 +319,12 @@ public class SearchController {
 				((Text)node).setText(null);
 			}
 		}
+	}
+	
+	private void errorUpdate(String str) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
+		alert.setHeaderText(str);
+		alert.showAndWait();
 	}
 }

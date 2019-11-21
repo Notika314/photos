@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Scanner;
+
+import model.Picture;
 import model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,16 +50,20 @@ public class PhotosController {
 		for (int i=0;i<files.length;i++) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(files[i]));
 			User user = (User)ois.readObject();
-			System.out.println("Reading user "+ user.userName +", with password "+user.password +" from a file .");
+			//System.out.println("Reading user "+ user.userName +", with password "+user.password +" from a file .");
 			ois.close();
 			int j = Collections.binarySearch(User.users, user);
 			j = ~j;
 			User.users.add(j,user);
 		}
+		for (Picture pic: User.users.get(1).userAlbums.get(0).pictures) {
+    		System.out.println(pic.file);
+    	}
+		/*
 		System.out.println("All current users are: :");
 		for (int i=0;i<User.users.size();i++) {
 			System.out.println(User.users.get(i).userName+", "+ User.users.get(i).password);
-		}
+		}*/
 	}
 	//I'm Keeping this here for now but I feel like it is a relic.
 	

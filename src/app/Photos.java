@@ -34,10 +34,10 @@ public class Photos extends Application {
     private double yOffset = 0;
     
     public static BorderPane root;
+   
     
-    /*
     public static void build() throws IOException {
-    	User stock = new User("stock", "stock");
+    	/*User stock = new User("stock", "stock");
     	File dir = new File("data/stockPhotos/");
     	File[] files = dir.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
@@ -49,14 +49,16 @@ public class Photos extends Application {
         	System.out.println(file);
 
     		stock.userAlbums.get(0).addPicture(new Picture(stock.userAlbums.get(0),file));
-    	}
-    }*/
+    	}*/
+    	
+    	
+    }
     
     
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException , ClassNotFoundException{
-		build();
+		//build();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/photos.fxml"));
 		root = loader.load();

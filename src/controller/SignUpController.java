@@ -73,7 +73,7 @@ public class SignUpController {
 		sc.close();
 	}
 	
-	public void signup(ActionEvent e) throws IOException {
+	public void signup() throws IOException {
 		String name = newUsrName.getText();
 		String password = newUsrPw.getText();
 		String passwordConfirm = confirmPw.getText();

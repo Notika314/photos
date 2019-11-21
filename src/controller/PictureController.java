@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 //import javafx.scene.layout.VBox;
 //import javafx.stage.Stage;
 //import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Alert.AlertType;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -108,7 +110,7 @@ public class PictureController {
 			tagList.setItems(obsTags);
 		}
 		else {
-			System.out.println("SelectedPicure is null");
+			errorUpdate("Selected Picture is blank");
 			obsTags = null;
 			tagList.setItems(null);
 		}
@@ -145,7 +147,7 @@ public class PictureController {
 	public void addType() {
 		int i = Collections.binarySearch(User.curr.tagTypes, typeField.getText(), String::compareToIgnoreCase);
 		if (i >= 0) {
-			System.out.println("Type Already Exits");
+			errorUpdate("Type Already Exits");
 		}
 		else {
 			i = ~i;
@@ -158,12 +160,12 @@ public class PictureController {
 	 */
 	public void addTag() {
 		if (tagField.getText() == null || tagField.getText() == "" || tagField.getText().trim().length() == 0) {
-			System.out.println("Input valid value");
+			errorUpdate("Input valid value");
 			return;
 		}
 		if (typeList.getSelectionModel().getSelectedItem().equals("location")) {
 			if (selectedPicture.locationTagIsSet) {
-				System.out.println("Location is Unique!");
+				errorUpdate("Location is Unique!");
 				return;
 			}
 			selectedPicture.locationTagIsSet = true;
@@ -171,7 +173,7 @@ public class PictureController {
 		Tag temp = new Tag(typeList.getSelectionModel().getSelectedItem(),tagField.getText(),selectedPicture);
 		int i = Collections.binarySearch(obsTags, temp);
 		if (i >= 0) {
-			System.out.println("Tag Already exits");
+			errorUpdate("Tag Already exits");
 			return;
 		}
 		i = ~i;
@@ -185,11 +187,11 @@ public class PictureController {
 	 */
 	public void deleteTag() {
 		if (obsTags.size() == 0) {
-			System.out.println("The list is empty");
+			errorUpdate("The list is empty");
 			return;
 		}
 		if (selectedPicture == null) {
-			System.out.println("Select a photo");
+			errorUpdate("Select a photo");
 			return;
 		}
 		else {
@@ -216,5 +218,12 @@ public class PictureController {
 				((Text)node).setText(null);
 			}
 		}
+	}
+	
+	private void errorUpdate(String str) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
+		alert.setHeaderText(str);
+		alert.showAndWait();
 	}
 }

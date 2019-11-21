@@ -22,10 +22,12 @@ public class NavbarController {
 
 	
 	public void closeButton() throws IOException {
+		/*
 		System.out.println("All users are: ");
 		for (int i=0;i<User.users.size();i++) {
 			System.out.println(User.users.get(i));
 		}
+		*/
 		for (int i=0;i<User.users.size();i++) {
 			User.writeUser(User.users.get(i));
 		}
