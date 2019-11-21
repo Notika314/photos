@@ -53,24 +53,50 @@ public class LoginController {
 	 * label that shows the status of logging in
 	 */
 	@FXML Label logInLbl;
+	/**
+	 * field for entering user's name
+	 */
 	@FXML TextField newUsrName;
+	/**
+	 * field for entering returning user's name
+	 */
 	@FXML TextField loginUsrName;
+	/**
+	 * field for entering new user's password
+	 */
 	@FXML PasswordField newUsrPw;
+	/**
+	 * field for entering password confirmation
+	 */
 	@FXML PasswordField confirmPw;
+	/**
+	 * field 
+	 */
 	@FXML PasswordField logInPw;
-	
+	/**
+	 * photos controller
+	 */
 	protected PhotosController photosController;
 
 	
 	
-	
+	/**
+	 * Starts the controller
+	 * @param mainStage main container
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException throws IOException
+	 */
 	public void start(Stage mainStage) throws FileNotFoundException,IOException {  
 //		navbarController.setLoginController(this);
 		getAllUsersFromFile();	
 	}
 	
 	
-	
+	/**
+	 * gets all users from file
+	 * @throws FileNotFoundException throws exception if file not found
+	 * @throws IOException
+	 */
 	private void getAllUsersFromFile() throws FileNotFoundException , IOException {
 		if (!new File("users.txt").exists()) {
 			return;
@@ -86,7 +112,10 @@ public class LoginController {
 		}
 		sc.close();
 	}
-	
+	/**
+	 * triggers loggin in
+	 * @throws IOException throws IOException
+	 */
 	public void login() throws IOException {
 		if (loginUsrName.getText().toLowerCase().equals("admin")) {
 			if (logInPw.getText().equals("admin")) {

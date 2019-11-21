@@ -177,7 +177,7 @@ public class PictureController {
 		i = ~i;
 		obsTags.add(i, temp);
 		tagList.getSelectionModel().select(i);
-			
+		clearFields((AnchorPane)addTagBtn.getParent());	
 		
 	}
 	/**
