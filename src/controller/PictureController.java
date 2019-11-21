@@ -24,25 +24,74 @@ import model.Album;
 import model.Picture;
 import model.Tag;
 import model.User;
-
+/** Implements UI logic on Picture view , handles editing,
+ *  viewing Picture, adding /deleting tags and captions
+ * @author Christopher Taglieri cat 197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class PictureController {
+	/**
+	 * displays the picture
+	 */
 	@FXML ImageView image;
+	/**
+	 * Triggers creating/editing picture's caption
+	 */
 	@FXML Button captionBtn;
+	/**
+	 * Triggers adding new Tag to picture
+	 */
 	@FXML Button addTagBtn;
+	/**
+	 * Triggers adding type to picture
+	 */
 	@FXML Button addTypeBtn;
+	/**
+	 * Field where user enters new/modified caption for picture
+	 */
 	@FXML TextField captionField;
+	/**
+	 * Field where user enters type for tag
+	 */
 	@FXML TextField typeField;
+	/**
+	 * Field where user enters value of tag
+	 */
 	@FXML TextField tagField;
+	/**
+	 * Lists all of the types of tags that current user has
+	 */
 	@FXML ListView<String> typeList;
+	/**
+	 * Lists all the tags defined on the picture
+	 */
 	@FXML ListView<Tag> tagList;
+	/**
+	 * Displays caption of the picture
+	 */
 	@FXML Label CaptionLbl;
+	/**
+	 * The picture that is displayed on the page
+	 */
 	Picture selectedPicture;
-	
+	/**
+	 * Observable list linked to all the tags of the picture
+	 */
 	private ObservableList<Tag> obsTags;  
+	/** 
+	 * Observable list linked to all the types of the tags 
+	 * that current user has defined
+	 */
 	private ObservableList<String> obsTypes;  
-	
+	/**
+	 * Currently active tab
+	 */
 	private int currentTab = 0;
-	
+	/**
+	 * Starts the page
+	 * @throws IOException
+	 */
 	public void start() throws IOException {  
 		selectedPicture = Picture.curr;
 		if (selectedPicture != null) {
@@ -74,12 +123,16 @@ public class PictureController {
 
 	}
 	
-	
+	/**
+	 * Changes caption of the picture
+	 */
 	public void caption() {
 		selectedPicture.recaption(captionField.getText());
 		CaptionLbl.setText(captionField.getText());
 	}
-	
+	/**
+	 * adding new type to users list of tags and displaying it on the page
+	 */
 	public void addType() {
 		int i = Collections.binarySearch(User.curr.tagTypes, typeField.getText(), String::compareToIgnoreCase);
 		if (i >= 0) {
@@ -91,7 +144,9 @@ public class PictureController {
 			typeList.getSelectionModel().select(i);
 		}
 	}
-	
+	/**
+	 * Adding new tag to current picture and displays it on the page
+	 */
 	public void addTag() {
 		if (tagField.getText() == null || tagField.getText() == "" || tagField.getText().trim().length() == 0) {
 			System.out.println("Input valid value");
@@ -116,7 +171,9 @@ public class PictureController {
 			
 		
 	}
-	
+	/**
+	 * deletes the tag from the list of picture's tags
+	 */
 	public void deleteTag() {
 		if (obsTags.size() == 0) {
 			System.out.println("The list is empty");
