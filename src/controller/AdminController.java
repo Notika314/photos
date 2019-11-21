@@ -20,20 +20,56 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
-
+/**
+ * Controller for Admin page, where admin user can create ,
+ * list or delete accounts
+ * @author Christopher Taglieri cat197
+ * @author Natalia Bryzhatenko nb631
+ *
+ */
 public class AdminController {
+	/**
+	 * lists all users that were created so far
+	 */
 	@FXML ListView<User> allUsers;
+	/**
+	 * button that triggers the method that creates new user
+	 */
 	@FXML Button CreateAccount;
+	/**
+	 * Shows updates about success/failure of user deletion
+	 */
 	@FXML Label DeleteUserLbl;
+	/**
+	 * Shows updates about success/failure of account creation
+	 */
 	@FXML Label NewUserLbl;
+	/**
+	 * textfield where user can enter new user name while creating account
+	 */
 	@FXML TextField newUsrName;
+	/**
+	 * textfield where user can enter new user's password
+	 */
 	@FXML PasswordField newUsrPw;
+	/**
+	 * textfeild for confirming the password
+	 */
 	@FXML PasswordField confirmPw;
+	/**
+	 * button that triggers account's deletion
+	 */
 	@FXML Button deleteUser;
-	
+	/**
+	 * Observable list that displays all existing users
+	 */
 	private ObservableList<User> obsList; 
+	/**
+	 * Starts the page, displays all users  
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void start() throws FileNotFoundException,IOException { 
-		System.out.println("In admin page");
 		obsList = FXCollections.observableArrayList(User.users); 
 	
 		allUsers.setItems(obsList); 
@@ -43,9 +79,11 @@ public class AdminController {
 			allUsers.getFocusModel().focus(0);
 		}
 	}
-
+	/**
+	 * Creates new user if all the fields are filled correctly
+	 * @throws IOException
+	 */
 	public void create() throws IOException {
-		System.out.println("Creating new user");
 		if (newUsrName.getText() == null || newUsrName.getText() == "" || 
 				newUsrPw.getText() == null || newUsrPw.getText() == "" ||
 				confirmPw.getText() == null || confirmPw.getText() == "") {
@@ -62,9 +100,11 @@ public class AdminController {
 			if (User.usernameExists(name)) {
 				NewUserLbl.setStyle("-fx-text-fill: red;");
 				NewUserLbl.setText("Choose different username");
+				DeleteUserLbl.setText("");
 			} else if (name.contentEquals("")|| password.contentEquals("")) {
 				NewUserLbl.setStyle("-fx-text-fill: red;");
 				NewUserLbl.setText("Username or password can't be empty");
+				DeleteUserLbl.setText("");
 			}	else {
 				User u = new User(name, password);
 //				User.users.add(u);
@@ -73,16 +113,18 @@ public class AdminController {
 				obsList.add(i, u);
 				allUsers.getSelectionModel().select(i);
 				NewUserLbl.setStyle("-fx-text-fill: green;");
+				DeleteUserLbl.setText("");
 				NewUserLbl.setText("Created account successfully, "+name);
 				clearFields((AnchorPane)newUsrName.getParent());
 			}
 		}
 	}
-	
+	/**
+	 * deletes selected user
+	 * @throws IOException
+	 */
 	public void deleteUser() throws IOException {
-//		System.out.prinltn
 		if (obsList.size() == 0) {
-			System.out.println("The list is empty");
 			return;
 		}
 		else {
@@ -95,9 +137,10 @@ public class AdminController {
     		if(file.delete()){
     			DeleteUserLbl.setStyle("-fx-text-fill: green;");
 				DeleteUserLbl.setText("Account was deleted successfully");
+				NewUserLbl.setText("");
     		}else{
-    			DeleteUserLbl.setStyle("-fx-text-fill: red;");
-				DeleteUserLbl.setText("Could not delete the user");
+				DeleteUserLbl.setText("");
+				NewUserLbl.setText("");
     		}
     	   
 			if (obsList.size() != 0) {
@@ -109,7 +152,10 @@ public class AdminController {
 		}
 	}
 	
-
+	/**
+	 * helper method, clears fields to be ready for future input
+	 * @param pane
+	 */
 	private void clearFields(AnchorPane pane) {
 		for (Node node : pane.getChildren()) {
 			if (node instanceof TextField) {
